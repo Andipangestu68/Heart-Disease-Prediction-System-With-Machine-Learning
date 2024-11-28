@@ -1,7 +1,7 @@
 # Sistem Deteksi Dini Penyakit Jantung Berbasis Website
 
 ## Deskripsi
-Sistem Deteksi Dini Penyakit Jantung ini adalah sebuah aplikasi berbasis web yang dirancang untuk membantu pengguna dalam mendeteksi risiko penyakit jantung menggunakan pendekatan Machine Learning. Aplikasi ini memanfaatkan algoritma Logistic Regression untuk memproses data medis dan memberikan prediksi mengenai kemungkinan terjadinya penyakit jantung. Dengan antarmuka yang responsif dan interaktif, sistem ini bertujuan untuk meningkatkan kesadaran akan pentingnya pencegahan penyakit jantung dan membantu pengguna membuat keputusan yang lebih baik terkait kesehatan mereka.
+Sistem Deteksi Dini Penyakit Jantung ini adalah sebuah aplikasi berbasis web yang dirancang untuk membantu pengguna dalam mendeteksi risiko penyakit jantung menggunakan pendekatan Machine Learning. Aplikasi ini memanfaatkan algoritma Logistic Regression untuk memproses Heart Disease datasets yang diambil dari UCI Machine learning dan memberikan prediksi mengenai kemungkinan terjadinya penyakit jantung. Dengan antarmuka yang responsif dan interaktif, sistem ini bertujuan untuk meningkatkan kesadaran akan pentingnya pencegahan penyakit jantung dan membantu pengguna membuat keputusan yang lebih baik terkait kesehatan mereka.
 
 ## Fitur Utama
 - **Prediksi Risiko Penyakit Jantung**: Pengguna dapat memasukkan data medis pribadi untuk mendapatkan hasil prediksi risiko penyakit jantung.
