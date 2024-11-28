@@ -1,6 +1,6 @@
 from ucimlrepo import fetch_ucirepo
 import pandas as pd
-from xgboost.testing import datasets
+
 
 # Ambil dataset dengan ID 45 (Heart Disease dataset)
 heart_disease = fetch_ucirepo(id=45)
