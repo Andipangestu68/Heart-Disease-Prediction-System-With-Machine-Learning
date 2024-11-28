@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- Primary Meta Tags -->
+    <title>Neumorphism Components - Forms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="title" content="Neumorphism Components - Forms">
+    <meta name="author" content="Themesberg">
+
+    <link rel="canonical" href="https://themesberg.com/product/ui-kits/neumorphism-ui/" />
+
+    <!--  Social tags -->
+    <meta name="keywords" content="neumorphism, neumorphism ui, neomorphism, neomorphism ui, neomorphism css, neumorphism css, neumorph, neumorphic, design system, login, form, table, tables, card, cards, navbar, modal, icons, icons, map, chat, carousel, menu, datepicker, gallery, slider, date, social, dropdown, search, tab, nav, footer, date picker, forms, tabs, time, button, select, input, timeline, cart, about us, account, log in, blog, profile, portfolio, landing page, ecommerce, shop, landing, register, app, contact, one page, sign up, signup, store, bootstrap 4, bootstrap4, dashboard, bootstrap 4 dashboard, bootstrap 4 design, bootstrap 4 system, bootstrap 4, bootstrap 4 uit kit, bootstrap 4 kit, themesberg, html kit, html css template, web template, bootstrap, bootstrap 4, css3 template, frontend, responsive bootstrap template, bootstrap ui kit, responsive ui kit">
+    <meta name="description" content="Start developing neumorphic web applications and pages using Neumorphism UI. It features over 100 individual components and 5 example pages.">
+
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="Neumorphism UI by Themesberg">
+    <meta itemprop="description" content="Start developing neumorphic web applications and pages using Neumorphism UI. It features over 100 individual components and 5 example pages.">
+    <meta itemprop="image" content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/neumorphism-ui/neumorphism-thumbnail.jpg">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="product">
+    <meta name="twitter:site" content="@themesberg">
+    <meta name="twitter:title" content="Neumorphism UI by Themesberg">
+    <meta name="twitter:description" content="Start developing neumorphic web applications and pages using Neumorphism UI. It features over 100 individual components and 5 example pages.">
+    <meta name="twitter:creator" content="@themesberg">
+    <meta name="twitter:image" content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/neumorphism-ui/neumorphism-thumbnail.jpg">
+
+    <!-- Open Graph data -->
+    <meta property="fb:app_id" content="214738555737136">
+    <meta property="og:title" content="Neumorphism UI by Themesberg" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://demo.themesberg.com/neumorphism-ui/" />
+    <meta property="og:image" content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/neumorphism-ui/neumorphism-thumbnail.jpg"/>
+    <meta property="og:description" content="Start developing neumorphic web applications and pages using Neumorphism UI. It features over 100 individual components and 5 example pages." />
+    <meta property="og:site_name" content="Themesberg" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="120x120" href="../../assets/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../../assets/img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="../../assets/img/favicon/safari-pinned-tab.svg" color="#ffffff">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Fontawesome -->
+    <link type="text/css" href="../../vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+    <!-- Pixel CSS -->
+    <link type="text/css" href="../../css/neumorphism.css" rel="stylesheet">
+
+    <!--js pdf-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body >
+
+    <!--Start topbar header-->
+    <header class="header-global" sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" >
+        <!-- Navbar -->
+        <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary headroom navbar-light navbar-transparent navbar-theme-primary">
+            <div class="container position-relative">
+                <a class="navbar-brand shadow-soft py-2 px-3 rounded border border-light mr-lg-4" href="./index.html">
+                    <img class="navbar-brand-dark" src="/assets/img/brand/logos.svg" alt="Logo light">
+                    <img class="navbar-brand-light" src="/assets/img/brand/logos.svg" alt="Logo dark">
+                </a>
+
+                <!-- Tombol Menu hamburger jika device mobile -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navbar menu -->
+                <div class="navbar-collapse collapse" id="navbar_global">
+                    <div class="navbar-collapse-header">
+                        <div class="row">
+                            <div class="col-6 collapse-brand">
+                                <a href="./index.html" class="navbar-brand shadow-soft py-2 px-3 rounded border border-light">
+                                    <img src="/assets/img/brand/logos.svg" alt="Themesberg logo">
+                                </a>
+                            </div>
+                            <div class="col-6 collapse-close">
+                                <a href="#navbar_global" class="fas fa-times" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" title="close" aria-label="Toggle navigation"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" data-toggle="dropdown">
+                                <span class="nav-link-inner-text">Pages</span>
+                                <span class="fas fa-angle-down nav-link-arrow ml-2"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" th:href="@{/api/v1/index}">About</a></li>
+                                <!-- Link Forms, hanya untuk USER dan ADMIN -->
+                                <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+                                    <a class="dropdown-item" th:href="@{/api/v1/forms}">Forms</a>
+                                </li>
+                                <!-- Link Patients, hanya untuk ADMIN -->
+                                <li sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <a class="dropdown-item" th:href="@{/api/v1/patients}">Patients</a>
+                                </li>
+                                <!-- Link Logout, hanya jika user sudah login -->
+                                <li sec:authorize="isAuthenticated()">
+                                    <a class="dropdown-item" th:href="@{/api/v1/logout}">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" data-toggle="dropdown">
+                                <span class="nav-link-inner-text">Documentation</span>
+                                <span class="fas fa-angle-down nav-link-arrow ml-2"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+                                    <a class="dropdown-item" th:href="@{/api/v1/tutor}">Tata cara pengisian Form</a></li>
+                                <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+                                    <a class="dropdown-item" th:href="@{/api/v1/datasets}">Datasets</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- User Info Badge untuk mobile and layar sedang -->
+                    <div class="d-lg-none">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                        <span class="nav-link">
+                            <i class="fa fa-user me-2"></i>
+                            <span th:text="${username}"></span>
+                        </span>
+                            </li>
+                            <!-- Display Roles -->
+                            <li class="nav-item">
+                        <span class="nav-link">
+                            <i class="fa fa-user-tag me-2"></i>
+                            <span th:each="role : ${roles}" th:text="${role.replace('ROLE_', '')}"></span>
+                        </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="d-none d-lg-block ml-auto">
+                    <span class="badge badge-lg badge-dark align-items-center">
+                        <i class="fa fa-user me-2"></i>
+                            <span th:text="${username}"></span>
+                            <span class="mx-2">|</span>
+                        <span th:each="role : ${roles}" th:text="${role.replace('ROLE_', '')}"></span>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!--    End Navbar-->
+
+
+    </header>
+    <!--End topbar header-->
+    <main>
+        <div class="section section-lg bg-primary text-dark pb-0">
+            <div class="container mt-5">
+                <div class="mb-4">
+                    <h2 class="text-center">Formulir Prediksi Risiko Penyakit Jantung</h2>
+                </div>
+                <form id="predictionForm">
+                    <div class="row">
+                        <!-- Kolom Kiri -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nama Lengkap</label>
+                                <input class="form-control" id="name" name="name" required placeholder="Masukkan Nama">
+                                <small class="form-text text-muted">Masukkan nama lengkap Anda sesuai identitas.</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="age" class="form-label">Usia (Tahun)</label>
+                                <input type="number" class="form-control" id="age" name="age" placeholder="Masukkan Usia" required>
+                                <small class="form-text text-muted">Usia Anda dalam tahun (contoh: 45).</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="sex" class="form-label">Jenis Kelamin</label>
+                                <select class="form-control" id="sex" name="sex" required>
+                                    <option value="" disabled selected>Pilih Jenis Kelamin</option>
+                                    <option value="1">Laki-laki</option>
+                                    <option value="0">Perempuan</option>
+                                </select>
+                                <small class="form-text text-muted">Pilih "Laki-laki" atau "Perempuan".</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cp" class="form-label">Tipe Nyeri Dada (Chest Pain)</label>
+                                <select class="form-control" id="cp" name="cp" required>
+                                    <option value="" disabled selected>Pilih Tipe Nyeri Dada</option>
+                                    <option value="0">Tidak Ada Nyeri Dada</option>
+                                    <option value="1">Nyeri Dada Ringan (Angina Stabil)</option>
+                                    <option value="2">Nyeri Dada Sedang (Angina Tidak Stabil)</option>
+                                    <option value="3">Nyeri Dada Parah (Nyeri Atypical)</option>
+                                </select>
+                                <small class="form-text text-muted">Pilih berdasarkan tingkat nyeri dada yang dirasakan.</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="trestbps" class="form-label">Tekanan Darah Istirahat (mmHg)</label>
+                                <input type="number" class="form-control" id="trestbps" name="trestbps" placeholder="Contoh: 120" required>
+                                <small class="form-text text-muted">Tekanan darah sistolik saat istirahat (contoh: 120 mmHg adalah tekanan darah normal).</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="chol" class="form-label">Kadar Kolesterol (mg/dL)</label>
+                                <input type="number" class="form-control" id="chol" name="chol" placeholder="Contoh: 200" required>
+                                <small class="form-text text-muted">Total kadar kolesterol dalam darah Anda (idealnya di bawah 200 mg/dL).</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fbs" class="form-label">Gula Darah Puasa Tinggi (> 120 mg/dL)</label>
+                                <select class="form-control" id="fbs" name="fbs" required>
+                                    <option value="" disabled selected>Pilih</option>
+                                    <option value="1">Ya, Lebih dari 120 mg/dL</option>
+                                    <option value="0">Tidak, Normal (≤ 120 mg/dL)</option>
+                                </select>
+                                <small class="form-text text-muted">Apakah gula darah Anda lebih dari 120 mg/dL setelah puasa?</small>
+                            </div>
+                        </div>
+
+                        <!-- Kolom Kanan -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="restecg" class="form-label">Hasil EKG Istirahat (Elektrokardiogram)</label>
+                                <select class="form-control" id="restecg" name="restecg" required>
+                                    <option value="" disabled selected>Pilih Hasil EKG</option>
+                                    <option value="0">Normal</option>
+                                    <option value="1">Gangguan Gelombang T (ST-T Abnormal)</option>
+                                    <option value="2">Gangguan Gelombang P (Hipertrofi Ventrikel Kiri)</option>
+                                </select>
+                                <small class="form-text text-muted">Pilih hasil pemeriksaan EKG Anda.</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="thalach" class="form-label">Detak Jantung Maksimum (BPM)</label>
+                                <input type="number" class="form-control" id="thalach" name="thalach" placeholder="Contoh: 150" required>
+                                <small class="form-text text-muted">Detak jantung maksimum yang tercatat selama aktivitas (contoh: 150 BPM).</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exang" class="form-label">Angina Saat Olahraga (Exercise-Induced Angina)</label>
+                                <select class="form-control" id="exang" name="exang" required>
+                                    <option value="" disabled selected>Pilih</option>
+                                    <option value="1">Ya, Ada Nyeri Dada Saat Olahraga</option>
+                                    <option value="0">Tidak, Tidak Ada Nyeri Dada</option>
+                                </select>
+                                <small class="form-text text-muted">Apakah Anda merasakan nyeri dada selama aktivitas fisik?</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="oldpeak" class="form-label">Depresi ST (Oldpeak)</label>
+                                <input type="number" step="0.1" class="form-control" id="oldpeak" name="oldpeak" placeholder="Contoh: 1.5" required>
+                                <small class="form-text text-muted">Perbedaan elevasi segmen ST saat istirahat (contoh: 1.5 menunjukkan depresi ST ringan).</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="slope" class="form-label">Kemiringan Segmen ST (Slope)</label>
+                                <select class="form-control" id="slope" name="slope" required>
+                                    <option value="" disabled selected>Pilih Kemiringan</option>
+                                    <option value="0">Menurun (Downsloping)</option>
+                                    <option value="1">Datar (Flat)</option>
+                                    <option value="2">Meningkat (Upsloping)</option>
+                                </select>
+                                <small class="form-text text-muted">Kemiringan segmen ST selama latihan fisik.</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="ca" class="form-label">Jumlah Pembuluh Darah Tersumbat</label>
+                                <input type="number" class="form-control" id="ca" name="ca" placeholder="Contoh: 0-3" required>
+                                <small class="form-text text-muted">Jumlah pembuluh darah yang mengalami penyumbatan (0-3).</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="thal" class="form-label">Kondisi Thalassemia</label>
+                                <select class="form-control" id="thal" name="thal" required>
+                                    <option value="" disabled selected>Pilih Kondisi Thalassemia</option>
+                                    <option value="1">Normal</option>
+                                    <option value="2">Thalassemia Minor</option>
+                                    <option value="3">Thalassemia Mayor</option>
+                                </select>
+                                <small class="form-text text-muted">Pilih berdasarkan hasil diagnosa kondisi thalassemia Anda.</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-3">
+                        <button type="submit" class="btn btn-primary w-100 shadow-sm">Prediksi Penyakit Jantung</button>
+                    </div>
+                </form>
+
+                <div id="result" class="mt-4"></div>
+            </div>
+        </div>
+    </main>
+<!-- Bootstrap core JavaScript-->
+    <footer class="d-flex pb-5 pt-6 pt-md-7 border-top border-light bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <p><strong>Neumorphism UI PRO</strong> is a premium Bootstrap UI Kit built based on the newest design trend called Neumorphism.</p>
+                    <ul class="d-flex list-unstyled mb-5 mb-lg-0">
+                        <li class="mr-2">
+                            <a href="https://twitter.com/themesberg" target="_blank" class="btn btn-icon-only btn-pill btn-primary" aria-label="twitter social link"
+                               data-toggle="tooltip" data-placement="top" title="Follow @themesberg on Twitter">
+                                <span aria-hidden="true" class="fab fa-twitter"></span>
+                            </a>
+                        </li>
+                        <li class="mr-2">
+                            <a href="https://www.facebook.com/themesberg/" target="_blank" class="btn btn-icon-only btn-pill btn-primary" aria-label="facebook social link"
+                               data-toggle="tooltip" data-placement="top" title="Like @themesberg on Facebook">
+                                <span aria-hidden="true" class="fab fa-facebook"></span>
+                            </a>
+                        </li>
+                        <li class="mr-2">
+                            <a href="https://github.com/themesberg" target="_blank" class="btn btn-icon-only btn-pill btn-primary" aria-label="github social link"
+                               data-toggle="tooltip" data-placement="top" title="Open source projects">
+                                <span aria-hidden="true" class="fab fa-github"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://dribbble.com/themesberg" target="_blank" class="btn btn-icon-only btn-pill btn-primary" aria-label="dribbble social link"
+                               data-toggle="tooltip" data-placement="top" title="Follow us on Dribbble">
+                                <span aria-hidden="true" class="fab fa-dribbble"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2 mb-5 mb-lg-0">
+                    <h5>Themesberg</h5>
+                    <ul class="footer-links list-unstyled mt-2">
+                        <li class="mb-1"><a class="p-2" target="_blank" href="https://themesberg.com/blog">Blog</a></li>
+                        <li class="mb-1"><a class="p-2" target="_blank" href="https://themesberg.com/products">Products</a></li>
+                        <li class="mb-1"><a class="p-2" target="_blank" href="https://themesberg.com/about">About Us</a></li>
+                        <li><a class="p-2" target="_blank" href="https://themesberg.com/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2 mb-5 mb-lg-0">
+                    <h5>Other</h5>
+                    <ul class="footer-links list-unstyled mt-2">
+                        <li class="mb-1"><a class="p-2" href="https://themesberg.com/docs/pixel-bootstrap/getting-started/overview/" target="_blank">Docs
+                            <span class="badge badge-gray text-uppercase ml-2">v1.0</span></a>
+                        </li>
+                        <li class="mb-1">
+                            <a class="p-2" href="https://themesberg.com/docs/pixel-bootstrap/getting-started/changelog" target="_blank">Changelog</a>
+                        </li>
+                        <li class="mb-1">
+                            <a class="p-2" target="_blank" href="https://themesberg.com/licensing">License</a>
+                        </li>
+                        <li>
+                            <a class="p-2" target="_blank" href="https://github.com/themesberg/pixel-bootstrap-ui-kit/issues">Support</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-lg-4 mb-5 mb-lg-0">
+                    <h5>Subscribe</h5>
+                    <p class="text-gray font-small mt-2">Join our mailing list. We write rarely, but only the best content.</p>
+                    <form action="#">
+                        <div class="form-row mb-2">
+                            <div class="col-12">
+                                <label class="h6 font-weight-normal d-none" for="exampleInputEmail3">Email address</label>
+                                <input type="email" class="form-control mb-2" placeholder="example@company.com" name="email" aria-label="Subscribe form" id="exampleInputEmail3" required>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary btn-block" data-loading-text="Sending">
+                                    <span>Subscribe</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <p class="text-gray font-small m-0">We’ll never share your details. See our <a class="text-black" href="#">Privacy Policy</a></p>
+                </div>
+            </div>
+            <hr class="my-5">
+            <div class="row">
+                <div class="col">
+                    <a href="https://themesberg.com" target="_blank" class="d-flex justify-content-center">
+                        <img src="../../assets/img/themesberg.svg" height="25" class="mb-3" alt="Themesberg Logo">
+                    </a>
+                    <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
+                        <p class="font-weight-normal font-small mb-0">Copyright © Themesberg
+                            <span class="current-year">2020</span>. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script>
+
+   document.getElementById('predictionForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const formData = {
+        name: document.getElementById('name').value,
+        age: parseInt(document.getElementById('age').value),
+        sex: parseInt(document.getElementById('sex').value),
+        cp: parseInt(document.getElementById('cp').value),
+        trestbps: parseInt(document.getElementById('trestbps').value),
+        chol: parseInt(document.getElementById('chol').value),
+        fbs: parseInt(document.getElementById('fbs').value),
+        restecg: parseInt(document.getElementById('restecg').value),
+        thalach: parseInt(document.getElementById('thalach').value),
+        exang: parseInt(document.getElementById('exang').value),
+        oldpeak: parseFloat(document.getElementById('oldpeak').value),
+        slope: parseInt(document.getElementById('slope').value),
+        ca: parseInt(document.getElementById('ca').value),
+        thal: parseInt(document.getElementById('thal').value)
+    };
+
+    try {
+        const response = await axios.post('http://localhost:8080/api/heart/predict', formData);
+        const { probability, risk } = response.data.data;
+        const message = response.data.message;
+
+        let userInputs = `
+            <strong>Nama:</strong> ${formData.name} <br>
+            <strong>Umur:</strong> ${formData.age} <br>
+            <strong>Jenis Kelamin:</strong> ${formData.sex === 1 ? 'Laki-laki' : 'Perempuan'} <br>
+            <strong>Chest Pain Type:</strong> ${formData.cp} <br>
+            <strong>Resting Blood Pressure:</strong> ${formData.trestbps} <br>
+            <strong>Cholesterol:</strong> ${formData.chol} <br>
+            <strong>Fasting Blood Sugar:</strong> ${formData.fbs} <br>
+            <strong>Resting ECG:</strong> ${formData.restecg} <br>
+            <strong>Max Heart Rate:</strong> ${formData.thalach} <br>
+            <strong>Exercise Induced Angina:</strong> ${formData.exang} <br>
+            <strong>ST Depression:</strong> ${formData.oldpeak} <br>
+            <strong>Slope:</strong> ${formData.slope} <br>
+            <strong>Major Vessels:</strong> ${formData.ca} <br>
+            <strong>Thalassemia:</strong> ${formData.thal} <br>
+        `;
+
+        let resultMessage = `
+            <strong>Status Risiko:</strong> ${risk === 'at risk' ? 'Berisiko Tinggi' : 'Tidak Berisiko'} <br>
+            <strong>Probabilitas Berisiko:</strong> ${(probability.at_risk * 100).toFixed(2)}% <br>
+            <strong>Probabilitas Tidak Berisiko:</strong> ${(probability.no_risk * 100).toFixed(2)}% <br>
+            <hr>
+            <p>${message}</p>
+        `;
+
+        // Gabungkan input dan hasil menjadi HTML yang akan ditampilkan dalam alert
+        let resultHTML = `
+            <div class="alert ${risk === 'at risk' ? 'alert-danger' : 'alert-secondary'} shadow-soft mb-4 mb-lg-5" role="alert">
+                <span class="alert-inner--icon icon-lg">
+                    <span class="${risk === 'at risk' ? 'fas fa-fire' : 'fas fa-exclamation-circle'}"></span>
+                </span>
+                <span class="alert-heading">${risk === 'at risk' ? 'Peringatan!' : 'Info'}</span>
+                <p><strong>Status Risiko:</strong> ${risk === 'at risk' ? 'Berisiko Tinggi' : 'Tidak Berisiko'}</p>
+                <p><strong>Probabilitas Berisiko:</strong> ${(probability.at_risk * 100).toFixed(2)}%</p>
+                <p><strong>Probabilitas Tidak Berisiko:</strong> ${(probability.no_risk * 100).toFixed(2)}%</p>
+                <hr>
+                <p class="mb-0">${message}</p>
+
+                <hr>
+                <strong>Data yang Dimasukkan:</strong>
+                <pre>${userInputs}</pre>
+
+                <!-- Tombol untuk menyimpan PDF -->
+                <button class="btn btn-primary w-100 shadow-sm" id="downloadPdf">Simpan ke PDF</button>
+            </div>
+        `;
+
+        // Tampilkan hasil di halaman dalam satu alert
+
+        document.getElementById('result').innerHTML = resultHTML;
+
+        // Event listener untuk tombol download PDF
+        document.getElementById('downloadPdf').addEventListener('click', function () {
+            const { jsPDF } = window.jspdf;
+
+            // Menyiapkan PDF
+            const doc = new jsPDF();
+
+            // Header dengan warna
+            doc.setFillColor(230, 230, 250); // Lavender
+            doc.rect(0, 0, 210, 30, 'F'); // Header background
+            doc.setFontSize(18);
+            doc.setFont('Helvetica', 'bold');
+            doc.setTextColor(0, 0, 128); // Dark Blue
+            doc.text("Laporan Prediksi Kesehatan", 105, 15, null, null, 'center');
+
+            // Info tanggal
+            const date = new Date().toLocaleDateString();
+            doc.setFontSize(10);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`Tanggal: ${date}`, 10, 35);
+
+            // Data Prediksi - Header
+            doc.setFontSize(14);
+            doc.setFont('Helvetica', 'bold');
+            doc.setTextColor(0, 0, 128);
+            doc.text("Data Prediksi", 10, 45);
+            doc.setLineWidth(0.5);
+            doc.setDrawColor(0, 0, 128);
+            doc.line(10, 48, 200, 48); // Garis pemisah
+
+            let yPosition = 50;
+
+            // Tabel Data Prediksi
+            doc.setFontSize(10);
+            doc.setFont('Helvetica', 'normal');
+            doc.setFillColor(240, 240, 255); // Light lavender
+            doc.rect(10, yPosition, 190, 60, 'F'); // Background untuk tabel
+
+            const prediksiData = [
+                { label: "Nama", value: formData.name },
+                { label: "Umur", value: formData.age },
+                { label: "Jenis Kelamin", value: formData.sex === 1 ? 'Laki-laki' : 'Perempuan' },
+                { label: "Status Risiko", value: risk === 'at risk' ? 'Berisiko Tinggi' : 'Tidak Berisiko' },
+                { label: "Probabilitas Berisiko", value: `${(probability.at_risk * 100).toFixed(2)}%` },
+                { label: "Probabilitas Tidak Berisiko", value: `${(probability.no_risk * 100).toFixed(2)}%` },
+                { label: "Pesan", value: message }
+            ];
+
+            prediksiData.forEach((item, index) => {
+                doc.text(`${item.label}: ${item.value}`, 15, yPosition + 10 + index * 8);
+            });
+
+            yPosition += 70; // Update posisi setelah tabel
+
+            // Garis pemisah
+            doc.setLineWidth(0.5);
+            doc.setDrawColor(0, 0, 128);
+            doc.line(10, yPosition, 200, yPosition);
+            yPosition += 5;
+
+            // Data Input - Header
+            doc.setFontSize(14);
+            doc.setFont('Helvetica', 'bold');
+            doc.setTextColor(0, 0, 128);
+            doc.text("Data yang Dimasukkan", 10, yPosition);
+            yPosition += 10;
+
+            // Tabel Data Input
+            doc.setFontSize(10);
+            doc.setFont('Helvetica', 'normal');
+            doc.setFillColor(245, 245, 245); // Light gray
+            doc.rect(10, yPosition, 190, 110, 'F'); // Background untuk tabel input
+
+            const inputData = `
+            Nama: ${formData.name}
+            Umur: ${formData.age}
+            Jenis Kelamin: ${formData.sex === 1 ? 'Laki-laki' : 'Perempuan'}
+            Chest Pain Type: ${formData.cp}
+            Resting Blood Pressure: ${formData.trestbps}
+            Cholesterol: ${formData.chol}
+            Fasting Blood Sugar: ${formData.fbs}
+            Resting ECG: ${formData.restecg}
+            Max Heart Rate: ${formData.thalach}
+            Exercise Induced Angina: ${formData.exang}
+            ST Depression: ${formData.oldpeak}
+            Slope: ${formData.slope}
+            Major Vessels: ${formData.ca}
+            Thalassemia: ${formData.thal}
+            `;
+
+            const inputLines = inputData.split('\n');
+            inputLines.forEach((line, index) => {
+                doc.text(line, 15, yPosition + 10 + index * 7);
+            });
+
+            yPosition += 120; // Update posisi setelah tabel
+
+            // Footer
+            doc.setFontSize(8);
+            doc.setFont('Helvetica', 'italic');
+            doc.setTextColor(128, 128, 128);
+            doc.text("Terima kasih telah menggunakan layanan kami.", 105, yPosition + 10, null, null, 'center');
+
+            // Simpan sebagai PDF
+            doc.save('hasil_prediksi_kesehatan.pdf');
+
+
+
+        });
+
+    } catch (error) {
+        console.error('Gagal mengirim data:', error);
+        document.getElementById('result').innerHTML = `
+            <div class="alert alert-danger shadow-soft mb-4 mb-lg-5" role="alert">
+                <span class="alert-inner--icon icon-lg"><span class="fas fa-fire"></span></span>
+                <span class="alert-heading">Kesalahan!</span>
+                <p>Gagal mengirim data. Silakan coba lagi.</p>
+                <hr>
+                <p class="mb-0">Pastikan semua data sudah terisi dengan benar dan coba lagi.</p>
+            </div>
+        `;
+    }
+});
+
+
+
+
+
+</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"></script>
+
+    <!-- Core -->
+    <script src="/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="/vendor/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/vendor/headroom.js/dist/headroom.min.js"></script>
+
+    <!-- Vendor JS -->
+    <script src="/vendor/onscreen/dist/on-screen.umd.min.js"></script>
+    <script src="/vendor/nouislider/distribute/nouislider.min.js"></script>
+    <script src="/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="/vendor/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="/vendor/jarallax/dist/jarallax.min.js"></script>
+    <script src="/vendor/jquery.counterup/jquery.counterup.min.js"></script>
+    <script src="/vendor/jquery-countdown/dist/jquery.countdown.min.js"></script>
+    <script src="/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="/vendor/prismjs/prism.js"></script>
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <!-- Neumorphism JS -->
+    <script src="/assets/js/neumorphism.js"></script>
+
+</body>
+</html>
