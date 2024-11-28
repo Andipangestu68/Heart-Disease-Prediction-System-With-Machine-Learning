@@ -158,7 +158,234 @@
 <main>
 
     <!-- Content -->
+    <div class="section section-lg bg-primary text-dark pb-0">
+    <div class="container">
+        <!-- Title -->
+        <div class="row">
+            <div class="col text-center">
+                <div class="mb-5">
+                    <span class="h5 text-center">Tata cara pengisian Form</span>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <!--Accordion-->
+                <div class="accordion shadow-soft rounded" id="accordionExample1">
+                    <!-- Nama Lengkap -->
+                    <div class="card card-sm card-body bg-primary border-light">
+                        <a href="#panel-1" data-target="#panel-1" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-1">
+                            <span class="h6 mb-0 font-weight-bold">Nama Lengkap</span>
+                            <span class="icon"><span class="fas fa-plus"></span></span>
+                        </a>
+                        <div class="collapse" id="panel-1">
+                            <div class="pt-3">
+                                <p>Isikan nama lengkap sesuai dengan identitas Anda. Ini penting untuk identifikasi data pada saat melakukan analisis prediksi penyakit jantung.</p>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Usia -->
+                    <div class="card card-sm card-body bg-primary border-light">
+                        <a href="#panel-2" data-target="#panel-2" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-2">
+                            <span class="h6 mb-0 font-weight-bold">Usia (Tahun)</span>
+                            <span class="icon"><span class="fas fa-plus"></span></span>
+                        </a>
+                        <div class="collapse" id="panel-2">
+                            <div class="pt-3">
+                                <p>Usia Anda dalam tahun. Usia adalah faktor penting dalam menilai risiko penyakit jantung, di mana risiko cenderung meningkat seiring bertambahnya usia.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jenis Kelamin -->
+                    <div class="card card-sm card-body bg-primary border-light">
+                        <a href="#panel-3" data-target="#panel-3" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-3">
+                            <span class="h6 mb-0 font-weight-bold">Jenis Kelamin</span>
+                            <span class="icon"><span class="fas fa-plus"></span></span>
+                        </a>
+                        <div class="collapse" id="panel-3">
+                            <div class="pt-3">
+                                <p>Pilih jenis kelamin Anda, "Laki-laki" atau "Perempuan". Jenis kelamin dapat mempengaruhi pola penyakit jantung, di mana pria umumnya lebih berisiko dibandingkan wanita pada usia yang sama.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tipe Nyeri Dada -->
+                    <div class="card card-sm card-body bg-primary border-light">
+                        <a href="#panel-4" data-target="#panel-4" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-4">
+                            <span class="h6 mb-0 font-weight-bold">Tipe Nyeri Dada</span>
+                            <span class="icon"><span class="fas fa-plus"></span></span>
+                        </a>
+                        <div class="collapse" id="panel-4">
+                            <div class="pt-3">
+                                <p>Pilih tipe nyeri dada yang Anda alami: <br>
+                                    <strong>0</strong> - Tidak ada nyeri dada <br>
+                                    <strong>1</strong> - Nyeri dada ringan (Angina Stabil) <br>
+                                    <strong>2</strong> - Nyeri dada sedang (Angina Tidak Stabil) <br>
+                                    <strong>3</strong> - Nyeri dada parah (Nyeri Atypical). <br>
+                                    Informasi ini membantu menganalisis kondisi jantung Anda.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tekanan Darah Istirahat -->
+                    <div class="card card-sm card-body bg-primary border-light">
+                        <a href="#panel-5" data-target="#panel-5" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-5">
+                            <span class="h6 mb-0 font-weight-bold">Tekanan Darah Istirahat (mmHg)</span>
+                            <span class="icon"><span class="fas fa-plus"></span></span>
+                        </a>
+                        <div class="collapse" id="panel-5">
+                            <div class="pt-3">
+                                <p>Tekanan darah sistolik saat istirahat diukur dalam mmHg. Tekanan darah yang normal umumnya di bawah 120/80 mmHg. Contoh: kolesterol 220 mg/dL dicatat dengan nilai "220"</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kadar Kolesterol -->
+                    <div class="card card-sm card-body bg-primary border-light">
+                        <a href="#panel-6" data-target="#panel-6" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-6">
+                            <span class="h6 mb-0 font-weight-bold">Kadar Kolesterol (mg/dL)</span>
+                            <span class="icon"><span class="fas fa-plus"></span></span>
+                        </a>
+                        <div class="collapse" id="panel-6">
+                            <div class="pt-3">
+                                <p>Total kadar kolesterol dalam darah. Idealnya, kadar kolesterol harus di bawah 200 mg/dL untuk meminimalkan risiko penyakit jantung.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gula Darah Puasa -->
+                    <div class="card card-sm card-body bg-primary border-light">
+                        <a href="#panel-7" data-target="#panel-7" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-7">
+                            <span class="h6 mb-0 font-weight-bold">Gula Darah Puasa Tinggi (> 120 mg/dL)</span>
+                            <span class="icon"><span class="fas fa-plus"></span></span>
+                        </a>
+                        <div class="collapse" id="panel-7">
+                            <div class="pt-3">
+                                <p>Pilih apakah gula darah puasa Anda lebih dari 120 mg/dL. Gula darah tinggi dapat menunjukkan risiko diabetes yang juga berhubungan dengan penyakit jantung.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hasil EKG Istirahat -->
+                    <div class="card card-sm card-body bg-primary border-light">
+                        <a href="#panel-8" data-target="#panel-8" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-8">
+                            <span class="h6 mb-0 font-weight-bold">Hasil EKG Istirahat</span>
+                            <span class="icon"><span class="fas fa-plus"></span></span>
+                        </a>
+                        <div class="collapse" id="panel-8">
+                            <div class="pt-3">
+                                <p>Pilih hasil pemeriksaan EKG Anda: <br>
+                                    <strong>0</strong> - Normal <br>
+                                    <strong>1</strong> - Gangguan Gelombang T (ST-T Abnormal) <br>
+                                    <strong>2</strong> - Gangguan Gelombang P (Hipertrofi Ventrikel Kiri). <br>
+                                    EKG membantu menilai aktivitas listrik jantung.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detak Jantung Maksimum -->
+                    <div class="card card-sm card-body bg-primary border-light">
+                        <a href="#panel-9" data-target="#panel-9" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-9">
+                            <span class="h6 mb-0 font-weight-bold">Detak Jantung Maksimum (BPM)</span>
+                            <span class="icon"><span class="fas fa-plus"></span></span>
+                        </a>
+                        <div class="collapse" id="panel-9">
+                            <div class="pt-3">
+                                <p>Detak jantung maksimum Anda saat aktivitas, diukur dalam BPM (detak per menit). Informasi ini membantu menilai kondisi jantung selama aktivitas fisik.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Angina Saat Olahraga -->
+                    <div class="card card-sm card-body bg-primary border-light">
+                        <a href="#panel-10" data-target="#panel-10" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-10">
+                            <span class="h6 mb-0 font-weight-bold">Angina Saat Olahraga</span>
+                            <span class="icon"><span class="fas fa-plus"></span></span>
+                        </a>
+                        <div class="collapse" id="panel-10">
+                            <div class="pt-3">
+                                <p>Pilih apakah Anda merasakan nyeri dada saat olahraga. Angina saat berolahraga menunjukkan adanya potensi masalah pada aliran darah ke jantung.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Depresi ST -->
+                    <div class="card card-sm card-body bg-primary border-light">
+                        <a href="#panel-11" data-target="#panel-11" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-11">
+                            <span class="h6 mb-0 font-weight-bold">Depresi ST (Oldpeak)</span>
+                            <span class="icon"><span class="fas fa-plus"></span></span>
+                        </a>
+                        <div class="collapse" id="panel-11">
+                            <div class="pt-3">
+                                <p>Oldpeak menunjukkan perbedaan elevasi segmen ST. Nilai yang tinggi dapat menunjukkan adanya kekurangan aliran darah ke jantung selama istirahat.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kemiringan Segmen ST -->
+                    <div class="card card-sm card-body bg-primary border-light">
+                        <a href="#panel-12" data-target="#panel-12" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-12">
+                            <span class="h6 mb-0 font-weight-bold">Kemiringan Segmen ST</span>
+                            <span class="icon"><span class="fas fa-plus"></span></span>
+                        </a>
+                        <div class="collapse" id="panel-12">
+                            <div class="pt-3">
+                                <p>Pilih kemiringan segmen ST selama latihan: <br>
+                                    <strong>0</strong> - Menurun <br>
+                                    <strong>1</strong> - Datar <br>
+                                    <strong>2</strong> - Meningkat. <br>
+                                    Informasi ini menunjukkan bagaimana jantung merespons latihan fisik.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jumlah Pembuluh Darah Tersumbat -->
+                    <div class="card card-sm card-body bg-primary border-light">
+                        <a href="#panel-13" data-target="#panel-13" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-13">
+                            <span class="h6 mb-0 font-weight-bold">Jumlah Pembuluh Darah Tersumbat</span>
+                            <span class="icon"><span class="fas fa-plus"></span></span>
+                        </a>
+                        <div class="collapse" id="panel-13">
+                            <div class="pt-3">
+                                <p>Jumlah pembuluh darah yang tersumbat (0-3). Semakin banyak pembuluh darah yang tersumbat, semakin besar risiko penyakit jantung.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kondisi Thalassemia -->
+                    <div class="card card-sm card-body bg-primary border-light">
+                        <a href="#panel-14" data-target="#panel-14" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-14">
+                            <span class="h6 mb-0 font-weight-bold">Kondisi Thalassemia</span>
+                            <span class="icon"><span class="fas fa-plus"></span></span>
+                        </a>
+                        <div class="collapse" id="panel-14">
+                            <div class="pt-3">
+                                <p>Pilih kondisi thalassemia Anda: <br>
+                                    <strong>1</strong> - Normal <br>
+                                    <strong>2</strong> - Thalassemia Minor <br>
+                                    <strong>3</strong> - Thalassemia Mayor. <br>
+                                    Kondisi thalassemia dapat mempengaruhi kesehatan jantung dan pembuluh darah.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End of Accordion-->
+            </div>
+        </div>
+
+        <!-- Title -->
+        <div class="row">
+            <div class="col text-center">
+                <div class="my-5">
+                    <span class="h5 text-center">Accordion with icons</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
 </main>
 
 <footer class="d-flex pb-5 pt-6 pt-md-7 border-top border-light bg-primary">
