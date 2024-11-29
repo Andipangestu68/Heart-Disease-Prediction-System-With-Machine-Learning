@@ -1,6 +1,5 @@
 package com.heart.disease.predict.service.impl;
 
-
 import com.heart.disease.predict.model.PatientsData;
 import com.heart.disease.predict.repository.PatientRepository;
 import com.heart.disease.predict.service.PatientService;
@@ -15,17 +14,26 @@ import java.util.Map;
 @Service
 public class PatientServiceImpl implements PatientService {
 
-    // Inisialisasi logger untuk mencatat log
+    // Inisialisasi logger untuk mencatat log informasi dan error
     private static final Logger logger = LoggerFactory.getLogger(PatientServiceImpl.class);
 
-    // Autowire repository pasien untuk operasi database
+    // Autowiring repository pasien untuk operasi database
     @Autowired
     private PatientRepository patientRepository;
 
+    /**
+     * Metode untuk menyimpan data pasien setelah melakukan prediksi
+     * dengan mengirim data ke API Flask dan menyimpan hasilnya di database.
+     *
+     * @param patientData Objek data pasien yang akan diproses.
+     * @return Objek data pasien yang sudah diprediksi dan disimpan di database.
+     */
     @Override
     public PatientsData savePatientData(PatientsData patientData) {
-        // URL API Flask yang digunakan untuk prediksi
+        // URL API Flask untuk melakukan prediksi
         String apiUrl = "http://localhost:5000/predict";
+
+        // Inisialisasi RestTemplate untuk melakukan komunikasi HTTP
         RestTemplate restTemplate = new RestTemplate();
 
         try {
@@ -33,15 +41,17 @@ public class PatientServiceImpl implements PatientService {
             Map<String, Object> response = restTemplate.postForObject(apiUrl, patientData, Map.class);
             logger.info("Respons diterima dari Flask API: {}", response);
 
-            // Cek apakah respons dari API valid dan memiliki struktur yang benar
+            // Validasi struktur respons dari API
             if (response != null && response.containsKey("probability") && response.containsKey("risk")) {
-                // Ambil data probabilitas dan risiko dari respons API
+                // Ambil data probabilitas dari respons API
                 Map<String, Double> probability = (Map<String, Double>) response.get("probability");
+
+                // Setel data risiko dan probabilitas risiko pada objek pasien
                 patientData.setRisk((String) response.get("risk"));
                 patientData.setAtRiskProbability(probability.get("at_risk").floatValue());
                 patientData.setNoRiskProbability(probability.get("no_risk").floatValue());
             } else {
-                // Jika respons tidak valid, catat error dan lempar exception
+                // Log error jika struktur respons tidak valid
                 logger.error("Struktur respons dari API tidak valid.");
                 throw new RuntimeException("Respons dari API prediksi tidak valid.");
             }
@@ -50,11 +60,11 @@ public class PatientServiceImpl implements PatientService {
             return patientRepository.save(patientData);
 
         } catch (HttpClientErrorException e) {
-            // Tangani kesalahan yang terjadi saat komunikasi dengan API Flask
+            // Tangani kesalahan HTTP yang terjadi saat komunikasi dengan API Flask
             logger.error("Terjadi kesalahan saat berkomunikasi dengan API prediksi: {}", e.getMessage());
             throw new RuntimeException("Terjadi kesalahan saat berkomunikasi dengan API prediksi: " + e.getMessage());
         } catch (Exception e) {
-            // Tangani semua jenis kesalahan lainnya yang mungkin terjadi
+            // Tangani kesalahan umum lainnya yang mungkin terjadi selama proses
             logger.error("Terjadi kesalahan saat memproses data pasien: {}", e.getMessage());
             throw new RuntimeException("Terjadi kesalahan saat memproses data pasien: " + e.getMessage());
         }
