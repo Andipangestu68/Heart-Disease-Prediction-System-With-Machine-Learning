@@ -8,8 +8,8 @@ app = Flask(__name__)
 
 # Load model dan scaler dari file yang sudah disimpan
 # Pastikan file model dan scaler tersedia di direktori yang benar
-model = joblib.load('modelLogisticRegression/model_Lr.joblib')  # Model Random Forest
-scaler = joblib.load('modelLogisticRegression/scaler_Lr.joblib')  # Scaler untuk standarisasi fitur
+model = joblib.load('modelLogisticRegression/model_Lr.pkl')  # Model Random Forest
+scaler = joblib.load('modelLogisticRegression/scaler_Lr.pkl')  # Scaler untuk standarisasi fitur
 
 # Daftar fitur yang digunakan untuk prediksi
 FEATURES = ['age', 'sex', 'cp', 'trestbps', 'chol', 'fbs',
