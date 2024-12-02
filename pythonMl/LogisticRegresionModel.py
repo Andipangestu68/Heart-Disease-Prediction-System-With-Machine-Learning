@@ -81,6 +81,6 @@ print(f"F1-Score: {f1_logreg:.4f}")
 print("\nClassification Report:\n", classification_report(y_test, y_pred_logreg))
 
 # menyimpan model kedalam joblib dengan ekstension .joblib
-joblib.dump(log_reg_model, 'modelLogisticRegression/model_Lr.joblib')
-joblib.dump(scaler, 'modelLogisticRegression/scaler_Lr.joblib')
-print("model dan scaler berhasil di simpan")
+# joblib.dump(log_reg_model, 'modelLogisticRegression/model_Lr.joblib')
+# joblib.dump(scaler, 'modelLogisticRegression/scaler_Lr.joblib')
+# print("model dan scaler berhasil di simpan")
