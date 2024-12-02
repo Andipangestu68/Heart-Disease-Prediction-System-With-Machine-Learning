@@ -129,23 +129,7 @@
         </section>
     </main>
 
-    <script>
-        // Fungsi untuk menghilangkan alert setelah beberapa detik
-    setTimeout(function() {
-        const alert = document.getElementById('logoutAlert');
-        if (alert) {
-            alert.style.display = 'none'; // Menghilangkan alert
-        }
-    }, 5000); // 5000 milidetik = 5 detik
 
-        // Fungsi untuk menghilangkan alert pw salah setelah beberapa detik
-    setTimeout(function() {
-        const alert = document.getElementById('loginAlert');
-        if (alert) {
-            alert.style.display = 'none'; // Menghilangkan alert
-        }
-    }, 5000); // 5000 milidetik = 5 detik
-    </script>
 
     <!-- Core -->
     <script src="/vendor/jquery/dist/jquery.min.js"></script>
@@ -171,7 +155,25 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+<script>
+    // Fungsi untuk menghilangkan alert setelah beberapa detik
+    setTimeout(function() {
+        const alert = document.getElementById('logoutAlert');
+        if (alert) {
+            alert.style.display = 'none'; // Menghilangkan alert
+        }
+    }, 5000); // 5000 milidetik = 5 detik
 
+        // Fungsi untuk menghilangkan alert pw salah setelah beberapa detik
+    setTimeout(function() {
+        const alert = document.getElementById('loginAlert');
+        if (alert) {
+            alert.style.display = 'none'; // Menghilangkan alert
+        }
+    }, 5000); // 5000 milidetik = 5 detik
+
+ //end login page function
+</script>
 </body>
 
 </html>
