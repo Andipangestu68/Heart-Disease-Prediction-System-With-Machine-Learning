@@ -32282,3 +32282,39 @@ article a:hover {
 }
 
 /*# sourceMappingURL=neumorphism.css.map */
+
+
+/* Back To Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none;
+    background-color: #6c757d; /* Abu-abu */
+    color: white;
+    text-align: center;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.back-to-top:hover {
+    background-color: #5a6268; /* Abu-abu gelap untuk hover */
+    color: #f8f9fa; /* Warna putih lebih terang saat hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1); /* Sedikit memperbesar tombol */
+}
+
+.back-to-top i {
+    line-height: 50px; /* Agar ikon vertikal sejajar sempurna */
+    transition: transform 0.3s ease;
+}
+
+.back-to-top:hover i {
+    transform: translateY(-2px); /* Efek ikon bergerak sedikit ke atas */
+}

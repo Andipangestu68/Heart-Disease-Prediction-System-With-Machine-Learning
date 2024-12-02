@@ -389,5 +389,25 @@ $(document).ready(function () {
 });
 
 
+// JavaScript for Back To Top Button
+document.addEventListener("DOMContentLoaded", function () {
+    const backToTopBtn = document.getElementById("backToTopBtn");
 
+    // Show/hide button based on scroll position
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 200) {
+            backToTopBtn.style.display = "block"; // Show button
+        } else {
+            backToTopBtn.style.display = "none"; // Hide button
+        }
+    });
+
+    // Scroll smoothly to top when button is clicked
+    backToTopBtn.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+});
 
