@@ -55,24 +55,23 @@ log_reg_model = LogisticRegression(
 log_reg_model.fit(X_train_scaled, y_train)
 y_pred_logreg = log_reg_model.predict(X_test_scaled)
 
-
-# menghitung confusion matrix dari model yang sudah dilatih
-conf_matrix = confusion_matrix(y_test, y_pred_logreg)
-# Ravel Confusion Matrix untuk mendapatkan TN, FP, FN, TP
-tn, fp, fn, tp = conf_matrix.ravel()
-
-# Cetak nilai TP, TN, FP, FN
-print("Confusion Matrix:\n", conf_matrix)
-print(f'\nTN (True Negative) : {tn}') # model memprediksi negatif dan sebenarnya negatif
-print(f'FP (False Positive): {fp}') # model memprediksi positif tetapi sebenarnya negatif (maka dikatakan juga type 1 error)
-print(f'FN (False Negative): {fn}') # model memprediksi negatif tetapi sebenarnya positif (maka dikatakan juga type 2 error)
-print(f'TP (True Positive) : {tp}') # model memprediksi positif dan sebenarnya positif
-
 # Evaluasi Model Logistic Regression
 accuracy_logreg = accuracy_score(y_test, y_pred_logreg)     # menghitung acuracy dari model
 precision_logreg = precision_score(y_test, y_pred_logreg)   # menghitung Presisi dari model
 recall_logreg = recall_score(y_test, y_pred_logreg)         # menghitung recall dari model
 f1_logreg = f1_score(y_test, y_pred_logreg)                 # menghitung F1 score dari model
+conf_matrix = confusion_matrix(y_test, y_pred_logreg)       # menghitung confusion matrix dari model yang sudah dilatih
+
+# Ravel Confusion Matrix untuk mendapatkan TN, FP, FN, TP
+tn, fp, fn, tp = conf_matrix.ravel()
+
+# Cetak nilai TP, TN, FP, FN
+print("Confusion Matrix:\n", conf_matrix)
+
+print(f'\nTP (True Positive) : {tp}')
+print(f'TN (True Negative) : {tn}')
+print(f'FP (False Positive): {fp}')
+print(f'FN (False Negative): {fn}')
 
 print(f"\nAkurasi Logistic Regression: {accuracy_logreg * 100:.2f}%")
 print(f"Precision: {precision_logreg:.4f}")
@@ -81,7 +80,7 @@ print(f"F1-Score: {f1_logreg:.4f}")
 
 print("\nClassification Report:\n", classification_report(y_test, y_pred_logreg))
 
-# # menyimpan model kedalam joblib dengan ekstension .pkl
-# joblib.dump(log_reg_model, 'modelLogisticRegression/model_Lr.joblib')
-# joblib.dump(scaler, 'modelLogisticRegression/scaler_Lr.joblib')
-# print("model dan scaler berhasil di simpan")
+# menyimpan model kedalam joblib dengan ekstension .joblib
+joblib.dump(log_reg_model, 'modelLogisticRegression/model_Lr.joblib')
+joblib.dump(scaler, 'modelLogisticRegression/scaler_Lr.joblib')
+print("model dan scaler berhasil di simpan")
