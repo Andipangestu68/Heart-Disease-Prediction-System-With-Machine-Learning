@@ -55,17 +55,17 @@
         <!-- Navbar -->
         <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary headroom navbar-light navbar-transparent navbar-theme-primary">
             <div class="container position-relative">
-                <a class="navbar-brand shadow-soft py-2 px-3 rounded border border-light mr-lg-4" href="./index.html">
+                <a class="navbar-brand shadow-soft py-2 px-3 rounded border border-light mr-lg-4" href="#">
                     <img class="navbar-brand-dark" src="/assets/img/brand/logos.svg" alt="Logo light">
                     <img class="navbar-brand-light" src="/assets/img/brand/logos.svg" alt="Logo dark">
                 </a>
 
-                <!-- Hamburger Toggle Button for mobile view -->
+                <!-- Tombol Menu hamburger jika device mobile -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span> <!-- This is the hamburger icon -->
+                    <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <!-- Navbar collapse menu -->
+                <!-- Navbar menu -->
                 <div class="navbar-collapse collapse" id="navbar_global">
                     <div class="navbar-collapse-header">
                         <div class="row">
@@ -107,14 +107,15 @@
                                 <span class="fas fa-angle-down nav-link-arrow ml-2"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/html/pages/about.html">Datasets</a></li>
-                                <li><a class="dropdown-item" href="/html/pages/pricing.html">Tata cara pengisian Form</a></li>
+                                <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+                                    <a class="dropdown-item" th:href="@{/api/v1/tutor}">Tata cara pengisian Form</a></li>
+                                <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+                                    <a class="dropdown-item" th:href="@{/api/v1/datasets}">Datasets</a></li>
                             </ul>
                         </li>
                     </ul>
-
-                    <!-- User Info Badge for mobile and large screens -->
-                    <div class="d-lg-none"> <!-- This will show on small devices (mobile) -->
+                    <!-- User Info Badge untuk mobile and layar sedang -->
+                    <div class="d-lg-none">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
                         <span class="nav-link">
@@ -125,24 +126,20 @@
                             <!-- Display Roles -->
                             <li class="nav-item">
                         <span class="nav-link">
-                            <i class="fa fa-user-tag me-2"></i> <!-- Role icon -->
+                            <i class="fa fa-user-tag me-2"></i>
                             <span th:each="role : ${roles}" th:text="${role.replace('ROLE_', '')}"></span>
                         </span>
                             </li>
                         </ul>
                     </div>
-
-                    <div class="d-none d-lg-block ml-auto"> <!-- This will show on large screens (PC) -->
-                        <span class="badge badge-lg badge-dark align-items-center">
-                    <i class="fa fa-user me-2"></i>
-                    <span th:text="${username}"></span>
-                    <span class="mx-2">|</span>
-                            <!-- Display Roles without 'ROLE_' -->
-                    <span th:each="role : ${roles}" th:text="${role.replace('ROLE_', '')}"></span>
+                    <div class="d-none d-lg-block ml-auto">
+                    <span class="badge badge-lg badge-dark align-items-center">
+                        <i class="fa fa-user me-2"></i>
+                            <span th:text="${username}"></span>
+                            <span class="mx-2">|</span>
+                        <span th:each="role : ${roles}" th:text="${role.replace('ROLE_', '')}"></span>
                     </span>
                     </div>
-
-
                 </div>
             </div>
         </nav>
