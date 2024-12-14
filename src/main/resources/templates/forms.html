@@ -108,9 +108,9 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
-                                    <a class="dropdown-item" th:href="@{/api/v1/tutor}">Tata cara pengisian Form</a></li>
+                                    <a class="dropdown-item" th:href="@{/api/v1/datasets}">Heart Disease</a></li>
                                 <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
-                                    <a class="dropdown-item" th:href="@{/api/v1/datasets}">Datasets</a></li>
+                                    <a class="dropdown-item" th:href="@{/api/v1/tutor}">Tata cara pengisian Form</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -287,9 +287,9 @@
                     <p><strong>Sistem Deteksi Dini Penyakit Jantung Berbasis Website</strong> dengan penerapan Machine Learning menggunakan algoritma logistic regression.</p>
                     <ul class="d-flex list-unstyled mb-5 mb-lg-0">
                         <li class="mr-2">
-                            <a href="https://www.instagram.com/ndyy68_/" target="_blank" class="btn btn-icon-only btn-pill btn-primary" aria-label="twitter social link"
-                               data-toggle="tooltip" data-placement="top" title="Follow on Twitter">
-                                <span aria-hidden="true" class="fab fa-twitter"></span>
+                            <a href="https://www.instagram.com/ndyy68_/" target="_blank" class="btn btn-icon-only btn-pill btn-primary" aria-label="instagram social link"
+                               data-toggle="tooltip" data-placement="top" title="Follow on Instagram">
+                                <span aria-hidden="true" class="fab fa-instagram"></span>
                             </a>
                         </li>
                         <li class="mr-2">
@@ -325,23 +325,22 @@
                                 <input type="email" class="form-control mb-2" placeholder="example@company.com" name="email" aria-label="Subscribe form" id="exampleInputEmail3" required>
                             </div>
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" data-loading-text="Sending">
+                                <button class="btn btn-primary btn-block" data-loading-text="Sending">
                                     <span>Subscribe</span>
                                 </button>
                             </div>
                         </div>
                     </form>
-                    <p class="text-gray font-small m-0">We’ll never share your details. See our <a class="text-black" href="#">Privacy Policy</a></p>
                 </div>
             </div>
             <hr class="my-5">
             <div class="row">
                 <div class="col">
-                    <a href="https://themesberg.com" target="_blank" class="d-flex justify-content-center">
+                    <a class="d-flex justify-content-center">
                         <img src="/assets/img/brand/logos.svg" height="25" class="mb-3" alt="Project Logo">
                     </a>
                     <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
-                        <p class="font-weight-normal font-small mb-0">Copyright © <span class="current-year">2024</span> Sistem Deteksi Dini Penyakit Jantung. All rights reserved.</p>
+                        <p class="font-weight-normal font-small mb-0">Copyright © <span class="current-year">2024</span> Sistem Deteksi Dini Penyakit Jantung By Andi Pangestu. All rights reserved.</p>
                     </div>
                 </div>
             </div>
@@ -424,136 +423,135 @@
         `;
 
         // Tampilkan hasil di halaman dalam satu alert
-
         document.getElementById('result').innerHTML = resultHTML;
 
         // Event listener untuk tombol download PDF
-document.getElementById('downloadPdf').addEventListener('click', function () {
-    const { jsPDF } = window.jspdf;
+        document.getElementById('downloadPdf').addEventListener('click', function () {
+            const { jsPDF } = window.jspdf;
 
-    // Menyiapkan PDF
-    const doc = new jsPDF();
+            // Menyiapkan PDF
+            const doc = new jsPDF();
 
-    // Menambahkan header (logo dan judul)
-    doc.setFontSize(18);
-    doc.setFont('Helvetica', 'bold');
-    doc.text("Laporan Prediksi Kesehatan", 105, 20, null, null, 'center');
+            // Menambahkan header (logo dan judul)
+            doc.setFontSize(18);
+            doc.setFont('Helvetica', 'bold');
+            doc.text("Laporan Prediksi Kesehatan", 105, 20, null, null, 'center');
 
-    // Menambahkan garis pemisah setelah judul
-    doc.setLineWidth(0.5);
-    doc.line(10, 25, 200, 25);
+            // Menambahkan garis pemisah setelah judul
+            doc.setLineWidth(0.5);
+            doc.line(10, 25, 200, 25);
 
-    // Menambahkan info tanggal (bisa diubah sesuai kebutuhan)
-    const date = new Date().toLocaleDateString();
-    doc.setFontSize(10);
-    doc.setFont('Helvetica', 'normal');
-    doc.text(`Tanggal: ${date}`, 10, 30);
+            // Menambahkan info tanggal (bisa diubah sesuai kebutuhan)
+            const date = new Date().toLocaleDateString();
+            doc.setFontSize(10);
+            doc.setFont('Helvetica', 'normal');
+            doc.text(`Tanggal: ${date}`, 10, 30);
 
-    // Menambahkan informasi pribadi (tabel)
-    doc.setFontSize(12);
-    doc.setFont('Helvetica', 'bold');
-    doc.text("Data Prediksi", 10, 40);
-    doc.setLineWidth(0.5);
-    doc.line(10, 43, 200, 43); // Garis pemisah
+            // Menambahkan informasi pribadi (tabel)
+            doc.setFontSize(12);
+            doc.setFont('Helvetica', 'bold');
+            doc.text("Data Prediksi", 10, 40);
+            doc.setLineWidth(0.5);
+            doc.line(10, 43, 200, 43); // Garis pemisah
 
-    let yPosition = 50; // Posisi awal untuk data
+            let yPosition = 50; // Posisi awal untuk data
 
-    // Data Prediksi (diubah menjadi tabel)
-    doc.setFontSize(10);
-    const tableData = [
-        ['Nama', formData.name],
-        ['Umur', formData.age.toString()],
-        ['Jenis Kelamin', formData.sex === 1 ? 'Laki-laki' : 'Perempuan'],
-        ['Status Risiko', risk === 'at risk' ? 'Berisiko Tinggi' : 'Tidak Berisiko'],
-        ['Probabilitas Berisiko', `${(probability.at_risk * 100).toFixed(2)}%`],
-        ['Probabilitas Tidak Berisiko', `${(probability.no_risk * 100).toFixed(2)}%`],
-        ['Pesan', message]
-    ];
+            // Data Prediksi (diubah menjadi tabel)
+            doc.setFontSize(10);
+            const tableData = [
+                ['Nama', formData.name],
+                ['Umur', formData.age.toString()],
+                ['Jenis Kelamin', formData.sex === 1 ? 'Laki-laki' : 'Perempuan'],
+                ['Status Risiko', risk === 'at risk' ? 'Berisiko Tinggi' : 'Tidak Berisiko'],
+                ['Probabilitas Berisiko', `${(probability.at_risk * 100).toFixed(2)}%`],
+                ['Probabilitas Tidak Berisiko', `${(probability.no_risk * 100).toFixed(2)}%`],
+                ['Pesan', message]
+            ];
 
-    const tableStartY = yPosition;
-    const cellWidth = 90; // Lebar kolom untuk label
-    const valueWidth = 105; // Lebar kolom untuk nilai
+            const tableStartY = yPosition;
+            const cellWidth = 90; // Lebar kolom untuk label
+            const valueWidth = 105; // Lebar kolom untuk nilai
 
-    // Header tabel
-    doc.setFont('Helvetica', 'bold');
-    tableData.forEach((row, index) => {
-        // Gambar cell untuk label
-        doc.setFillColor(240, 240, 240); // Warna latar belakang untuk header
-        doc.rect(10, tableStartY + index * 10, cellWidth, 10, 'F'); // Cell untuk label
-        doc.setFont('Helvetica', 'normal');
-        doc.text(row[0], 15, tableStartY + index * 10 + 7);
+            // Header tabel
+            doc.setFont('Helvetica', 'bold');
+            tableData.forEach((row, index) => {
+                // Gambar cell untuk label
+                doc.setFillColor(240, 240, 240); // Warna latar belakang untuk header
+                doc.rect(10, tableStartY + index * 10, cellWidth, 10, 'F'); // Cell untuk label
+                doc.setFont('Helvetica', 'normal');
+                doc.text(row[0], 15, tableStartY + index * 10 + 7);
 
-        // Gambar cell untuk nilai
-        doc.setFillColor(255, 255, 255); // Warna latar belakang untuk nilai
-        doc.rect(100, tableStartY + index * 10, valueWidth, 10, 'F'); // Cell untuk nilai
-        doc.text(row[1], 105, tableStartY + index * 10 + 7);
-    });
+                // Gambar cell untuk nilai
+                doc.setFillColor(255, 255, 255); // Warna latar belakang untuk nilai
+                doc.rect(100, tableStartY + index * 10, valueWidth, 10, 'F'); // Cell untuk nilai
+                doc.text(row[1], 105, tableStartY + index * 10 + 7);
+            });
 
-    // Garis pemisah untuk bagian data input
-    yPosition += tableData.length * 10 + 5; // Perbarui posisi y setelah tabel
-    doc.setLineWidth(0.5);
-    doc.line(10, yPosition, 200, yPosition);
+            // Garis pemisah untuk bagian data input
+            yPosition += tableData.length * 10 + 5; // Perbarui posisi y setelah tabel
+            doc.setLineWidth(0.5);
+            doc.line(10, yPosition, 200, yPosition);
 
-    // Menambahkan judul untuk data yang dimasukkan
-    doc.setFontSize(12);
-    doc.setFont('Helvetica', 'bold');
-    doc.text("Data yang Dimasukkan:", 10, yPosition + 10);
-    yPosition += 20; // Spasi untuk judul
+            // Menambahkan judul untuk data yang dimasukkan
+            doc.setFontSize(12);
+            doc.setFont('Helvetica', 'bold');
+            doc.text("Data yang Dimasukkan:", 10, yPosition + 10);
+            yPosition += 20; // Spasi untuk judul
 
-    // Format data input sebagai teks
-    const inputData = `
-        Nama: ${formData.name}
-        Umur: ${formData.age}
-        Jenis Kelamin: ${formData.sex === 1 ? 'Laki-laki' : 'Perempuan'}
-        Chest Pain Type: ${formData.cp}
-        Resting Blood Pressure: ${formData.trestbps}
-        Cholesterol: ${formData.chol}
-        Fasting Blood Sugar: ${formData.fbs}
-        Resting ECG: ${formData.restecg}
-        Max Heart Rate: ${formData.thalach}
-        Exercise Induced Angina: ${formData.exang}
-        ST Depression: ${formData.oldpeak}
-        Slope: ${formData.slope}
-        Major Vessels: ${formData.ca}
-        Thalassemia: ${formData.thal}
-    `;
+            // Format data input sebagai teks
+            const inputData = `
+                Nama: ${formData.name}
+                Umur: ${formData.age}
+                Jenis Kelamin: ${formData.sex === 1 ? 'Laki-laki' : 'Perempuan'}
+                Chest Pain Type: ${formData.cp}
+                Resting Blood Pressure: ${formData.trestbps}
+                Cholesterol: ${formData.chol}
+                Fasting Blood Sugar: ${formData.fbs}
+                Resting ECG: ${formData.restecg}
+                Max Heart Rate: ${formData.thalach}
+                Exercise Induced Angina: ${formData.exang}
+                ST Depression: ${formData.oldpeak}
+                Slope: ${formData.slope}
+                Major Vessels: ${formData.ca}
+                Thalassemia: ${formData.thal}
+            `;
 
-    // Menampilkan data input dengan lebih terstruktur
-    const inputLines = inputData.split('\n');
-    inputLines.forEach(line => {
-        doc.setFontSize(10);
-        doc.setFont('Helvetica', 'normal');
-        doc.text(line, 10, yPosition);
-        yPosition += 7;
-    });
+            // Menampilkan data input dengan lebih terstruktur
+            const inputLines = inputData.split('\n');
+            inputLines.forEach(line => {
+                doc.setFontSize(10);
+                doc.setFont('Helvetica', 'normal');
+                doc.text(line, 10, yPosition);
+                yPosition += 7;
+            });
 
-    // Menambahkan garis pemisah akhir
-    doc.setLineWidth(0.5);
-    doc.line(10, yPosition, 200, yPosition);
+            // Menambahkan garis pemisah akhir
+            doc.setLineWidth(0.5);
+            doc.line(10, yPosition, 200, yPosition);
 
-    // Menambahkan footer
-    doc.setFontSize(8);
-    doc.setFont('Helvetica', 'italic');
-    doc.text("Terima kasih telah menggunakan layanan kami.", 105, yPosition + 10, null, null, 'center');
+            // Menambahkan footer
+            doc.setFontSize(8);
+            doc.setFont('Helvetica', 'italic');
+            doc.text("Terima kasih telah menggunakan layanan kami.", 105, yPosition + 10, null, null, 'center');
 
-    // Simpan sebagai PDF
-    doc.save('hasil_prediksi_kesehatan.pdf');
-});
+            // Simpan sebagai PDF
+            doc.save('hasil_prediksi_kesehatan.pdf');
+        });
 
 
-    } catch (error) {
-        console.error('Gagal mengirim data:', error);
-        document.getElementById('result').innerHTML = `
-            <div class="alert alert-danger shadow-soft mb-4 mb-lg-5" role="alert">
-                <span class="alert-inner--icon icon-lg"><span class="fas fa-fire"></span></span>
-                <span class="alert-heading">Kesalahan!</span>
-                <p>Gagal mengirim data. Silakan coba lagi.</p>
-                <hr>
-                <p class="mb-0">Pastikan semua data sudah terisi dengan benar dan coba lagi.</p>
-            </div>
-        `;
-    }
-});
+            } catch (error) {
+                console.error('Gagal mengirim data:', error);
+                document.getElementById('result').innerHTML = `
+                    <div class="alert alert-danger shadow-soft mb-4 mb-lg-5" role="alert">
+                        <span class="alert-inner--icon icon-lg"><span class="fas fa-fire"></span></span>
+                        <span class="alert-heading">Kesalahan!</span>
+                        <p>Gagal mengirim data. Silakan coba lagi.</p>
+                        <hr>
+                        <p class="mb-0">Pastikan semua data sudah terisi dengan benar dan coba lagi.</p>
+                    </div>
+                `;
+            }
+        });
 
 
 

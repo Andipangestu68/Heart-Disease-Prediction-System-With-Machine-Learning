@@ -69,7 +69,7 @@
                     <div class="row">
                         <div class="col-6 collapse-brand">
                             <a href="./index.html" class="navbar-brand shadow-soft py-2 px-3 rounded border border-light">
-                                <img src="/assets/img/brand/logos.svg" alt="Themesberg logo">
+                                <img src="/assets/img/brand/logos.svg">
                             </a>
                         </div>
                         <div class="col-6 collapse-close">
@@ -87,11 +87,11 @@
                             <li><a class="dropdown-item" th:href="@{/api/v1/index}">About</a></li>
                             <!-- Link Forms, hanya untuk USER dan ADMIN -->
                             <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
-                                <a class="dropdown-item" th:href="@{/api/v1/forms}">Forms</a>
+                                <a class="dropdown-item" th:href="@{/api/v1/forms}">Forms Prediksi</a>
                             </li>
                             <!-- Link Patients, hanya untuk ADMIN -->
                             <li sec:authorize="hasRole('ROLE_ADMIN')">
-                                <a class="dropdown-item" th:href="@{/api/v1/patients}">Patients</a>
+                                <a class="dropdown-item" th:href="@{/api/v1/patients}">Data Pasien</a>
                             </li>
                             <!-- Link Logout, hanya jika user sudah login -->
                             <li sec:authorize="isAuthenticated()">
@@ -106,9 +106,9 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
-                                <a class="dropdown-item" th:href="@{/api/v1/tutor}">Tata cara pengisian Form</a></li>
+                                <a class="dropdown-item" th:href="@{/api/v1/datasets}">Heart Disease</a></li>
                             <li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
-                                <a class="dropdown-item" th:href="@{/api/v1/datasets}">Datasets</a></li>
+                                <a class="dropdown-item" th:href="@{/api/v1/tutor}">Tata cara pengisian Form</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -172,13 +172,13 @@
             <div class="row align-items-center justify-content-around">
                 <div class="col-md-6 col-xl-6 mb-5">
                     <div class="card bg-primary shadow-soft border-light organic-radius p-3">
-                        <img class="organic-radius img-fluid" src="/assets/img/about-us-1.jpg" alt="modern desk">
+                        <img class="organic-radius img-fluid" src="/assets/img/medic.jpg" alt="modern desk">
                     </div>
                 </div>
                 <div class="col-md-6 col-xl-5 text-center text-md-left">
                     <h2 class="h1 mb-4">Deteksi Dini untuk Kesehatan Lebih Baik</h2>
-                    <p class="lead">Jaga kesehatan Anda dengan selangkah lebih maju! Website ini dirancang untuk membantu Anda memprediksi risiko penyakit secara dini, sehingga Anda dapat mengambil tindakan preventif sebelum terlambat. Dengan teknologi canggih dan analisis data yang akurat, kami memberikan wawasan kesehatan yang personal dan mudah diakses.</p>
-                    <p class="lead"> Mulailah perjalanan menuju hidup yang lebih sehat hari ini — gunakan layanan ini untuk memantau kesehatan Anda dengan lebih baik dan lebih proaktif!</p>
+                    <p class="lead">Website ini adalah alat yang berguna untuk menjaga kesehatan Anda secara proaktif. Dengan teknologi canggih, website ini dapat memprediksi risiko penyakit yang mungkin Anda alami di masa depan. Fitur-fitur yang disediakan akan membantu Anda menganalisis data kesehatan secara personal dan memberikan wawasan yang mudah dipahami. Dengan informasi ini, Anda dapat mengambil langkah-langkah pencegahan sebelum penyakit benar-benar menyerang. </p>
+                    <p class="lead">Mulai sekarang, Anda bisa memantau kesehatan Anda dengan lebih baik dan menjalani hidup yang lebih sehat.</p>
                     <img src="../../assets/img/signature.svg" alt="signature" class="mt-4" width="150">
                 </div>
             </div>
@@ -223,18 +223,7 @@
         </div>
     </section>
 
-    <!-- End of Title -->
 
-    <div class="container z-2 mb-5">
-        <div class="row justify-content-center">
-            <blockquote class="blockquote text-center">
-                Themesberg makes beautiful products to help people with creative ideas succeed. Our company empowers millions of people.
-                <footer class="blockquote-footer mt-3 text-dark">Zoltan Szőgyényi</footer>
-            </blockquote>
-        </div>
-    </div>
-
-    <!-- End of Contact Card -->
 
 
 </main>
@@ -253,9 +242,9 @@
                 <p><strong>Sistem Deteksi Dini Penyakit Jantung Berbasis Website</strong> dengan penerapan Machine Learning menggunakan algoritma logistic regression.</p>
                 <ul class="d-flex list-unstyled mb-5 mb-lg-0">
                     <li class="mr-2">
-                        <a href="https://www.instagram.com/ndyy68_/" target="_blank" class="btn btn-icon-only btn-pill btn-primary" aria-label="twitter social link"
-                           data-toggle="tooltip" data-placement="top" title="Follow on Twitter">
-                            <span aria-hidden="true" class="fab fa-twitter"></span>
+                        <a href="https://www.instagram.com/ndyy68_/" target="_blank" class="btn btn-icon-only btn-pill btn-primary" aria-label="instagram social link"
+                           data-toggle="tooltip" data-placement="top" title="Follow on Instagram">
+                            <span aria-hidden="true" class="fab fa-instagram"></span>
                         </a>
                     </li>
                     <li class="mr-2">
@@ -291,23 +280,22 @@
                             <input type="email" class="form-control mb-2" placeholder="example@company.com" name="email" aria-label="Subscribe form" id="exampleInputEmail3" required>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block" data-loading-text="Sending">
+                            <button class="btn btn-primary btn-block" data-loading-text="Sending">
                                 <span>Subscribe</span>
                             </button>
                         </div>
                     </div>
                 </form>
-                <p class="text-gray font-small m-0">We’ll never share your details. See our <a class="text-black" href="#">Privacy Policy</a></p>
             </div>
         </div>
         <hr class="my-5">
         <div class="row">
             <div class="col">
-                <a href="https://themesberg.com" target="_blank" class="d-flex justify-content-center">
+                <a class="d-flex justify-content-center">
                     <img src="/assets/img/brand/logos.svg" height="25" class="mb-3" alt="Project Logo">
                 </a>
                 <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
-                    <p class="font-weight-normal font-small mb-0">Copyright © <span class="current-year">2024</span> Sistem Deteksi Dini Penyakit Jantung. All rights reserved.</p>
+                    <p class="font-weight-normal font-small mb-0">Copyright © <span class="current-year">2024</span> Sistem Deteksi Dini Penyakit Jantung By Andi Pangestu. All rights reserved.</p>
                 </div>
             </div>
         </div>
