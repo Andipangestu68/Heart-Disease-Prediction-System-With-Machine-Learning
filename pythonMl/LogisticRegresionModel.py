@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report
 from sklearn.linear_model import LogisticRegression
+from imblearn.over_sampling import SMOTE
 import joblib
 
 # Meload dan Membaca data dari file CSV ke dalam DataFrame
@@ -26,6 +27,7 @@ X = df.drop('num', axis=1)  # Fitur (X)
 y = df['num'].apply(lambda x: 1 if x > 0 else 0)  # Target (y)
 print("\nTarget biner (y):")
 print(y.value_counts()) # menghitung jumlah colom target y
+
 
 # membagi Bagi Dataset menjadi Data Latih dan Uji yakni 80% untuk data latih dan 20% untuk data uji
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -81,6 +83,7 @@ print(f"F1-Score: {f1_logreg:.4f}")
 print("\nClassification Report:\n", classification_report(y_test, y_pred_logreg))
 
 # menyimpan model kedalam joblib dengan ekstension .joblib
-joblib.dump(log_reg_model, 'modelLogisticRegression/model_Lr.pkl')
-joblib.dump(scaler, 'modelLogisticRegression/scaler_Lr.pkl')
-print("model dan scaler berhasil di simpan")
+# joblib.dump(log_reg_model, 'modelLogisticRegression/model_Lr.pkl')
+# joblib.dump(scaler, 'modelLogisticRegression/scaler_Lr.pkl')
+# print("model dan scaler berhasil di simpan")
+
