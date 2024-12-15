@@ -4,7 +4,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report
 from sklearn.linear_model import LogisticRegression
-from imblearn.over_sampling import SMOTE
 import joblib
 
 # Meload dan Membaca data dari file CSV ke dalam DataFrame
