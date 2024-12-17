@@ -321,247 +321,242 @@
 
 <!-- Neumorphism JS -->
 <script src="/assets/js/neumorphism.js"></script>
-<script async defer src="https://buttons.github.io/buttons.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
 <script>
     let patientData = []; // Untuk menyimpan data pasien
- const rowsPerPage = 5; // Jumlah baris per halaman
- let currentPage = 1; // Halaman saat ini
+     const rowsPerPage = 5; // Jumlah baris per halaman
+     let currentPage = 1; // Halaman saat ini
 
- // Fungsi untuk mengambil data dari API
- async function fetchPatients() {
-     try {
-         const response = await fetch('/api/heart/patients');
-         if (!response.ok) throw new Error('Network response was not ok');
+     // Fungsi untuk mengambil data dari API
+     async function fetchPatients() {
+         try {
+             const response = await fetch('/api/heart/patients');
+             if (!response.ok) throw new Error('Network response was not ok');
 
-         const data = await response.json();
-         if (!Array.isArray(data)) throw new Error('Data is not an array');
+             const data = await response.json();
+             if (!Array.isArray(data)) throw new Error('Data is not an array');
 
-         patientData = data; // Simpan data pasien
-         currentPage = 1; // Reset ke halaman pertama
-         loadTable(patientData, currentPage); // Muat tabel untuk halaman pertama
-         loadPagination(patientData); // Muat pagination
-     } catch (error) {
-         console.error('Error fetching patient data:', error);
-         alert('Gagal mengambil data pasien. Silakan coba lagi.');
-     }
- }
-
- // Fungsi untuk menampilkan data di tabel berdasarkan halaman
- function loadTable(data, page) {
-     const startIndex = (page - 1) * rowsPerPage;
-     const endIndex = page * rowsPerPage;
-     const visibleData = data.slice(startIndex, endIndex);
-
-     const tableBody = document.getElementById('patient-table-body');
-     tableBody.innerHTML = ''; // Kosongkan tabel
-
-     visibleData.forEach((patient) => {
-         const row = document.createElement('tr');
-         row.innerHTML = `
-             <td>${patient.id}</td>
-             <td>${patient.name}</td>
-             <td>${patient.age}</td>
-             <td>${patient.sex === 1 ? 'Laki-laki' : 'Perempuan'}</td>
-             <td>${getChestPainType(patient.cp)}</td>
-             <td>${patient.trestbps}</td>
-             <td>${patient.chol}</td>
-             <td>${patient.fbs === 1 ? 'Tinggi' : 'Normal'}</td>
-             <td>${getECGType(patient.restecg)}</td>
-             <td>${patient.thalach}</td>
-             <td>${patient.exang === 1 ? 'Ya' : 'Tidak'}</td>
-             <td>${patient.oldpeak}</td>
-             <td>${getSlopeType(patient.slope)}</td>
-             <td>${patient.ca}</td>
-             <td>${getThalType(patient.thal)}</td>
-             <td>${patient.risk === 'at risk' ? 'Berisiko' : 'Tidak Berisiko'}</td>
-             <td>${(patient.atRiskProbability * 100).toFixed(2)}%</td>
-             <td>${(patient.noRiskProbability * 100).toFixed(2)}%</td>
-         `;
-         tableBody.appendChild(row);
-     });
- }
-
- // Fungsi untuk memuat pagination
- function loadPagination(data) {
-     const pagination = document.getElementById('pagination');
-     pagination.innerHTML = ''; // Kosongkan pagination
-
-     const totalPages = Math.ceil(data.length / rowsPerPage);
-     const paginationList = document.createElement('ul');
-     paginationList.classList.add('pagination');
-
-     // Tombol ke halaman pertama
-     const firstPageItem = document.createElement('li');
-     firstPageItem.classList.add('page-item');
-     firstPageItem.innerHTML = `<a class="page-link" href="#" aria-label="first link"><span class="fas fa-angle-double-left"></span></a>`;
-     firstPageItem.addEventListener('click', () => {
-         currentPage = 1;
-         loadTable(data, currentPage);
-         loadPagination(data);
-     });
-     paginationList.appendChild(firstPageItem);
-
-     // Tombol navigasi halaman
-     for (let i = 1; i <= totalPages; i++) {
-         const li = document.createElement('li');
-         li.classList.add('page-item');
-         if (i === currentPage) {
-             li.classList.add('active');
+             patientData = data; // Simpan data pasien
+             currentPage = 1; // Reset ke halaman pertama
+             loadTable(patientData, currentPage); // Muat tabel untuk halaman pertama
+             loadPagination(patientData); // Muat pagination
+         } catch (error) {
+             console.error('Error fetching patient data:', error);
+             alert('Gagal mengambil data pasien. Silakan coba lagi.');
          }
-         li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
-         li.addEventListener('click', () => {
-             currentPage = i;
+     }
+
+     // Fungsi untuk menampilkan data di tabel berdasarkan halaman
+     function loadTable(data, page) {
+         const startIndex = (page - 1) * rowsPerPage;
+         const endIndex = page * rowsPerPage;
+         const visibleData = data.slice(startIndex, endIndex);
+
+         const tableBody = document.getElementById('patient-table-body');
+         tableBody.innerHTML = ''; // Kosongkan tabel
+
+         visibleData.forEach((patient) => {
+             const row = document.createElement('tr');
+             row.innerHTML = `
+                 <td>${patient.id}</td>
+                 <td>${patient.name}</td>
+                 <td>${patient.age}</td>
+                 <td>${patient.sex === 1 ? 'Laki-laki' : 'Perempuan'}</td>
+                 <td>${getChestPainType(patient.cp)}</td>
+                 <td>${patient.trestbps}</td>
+                 <td>${patient.chol}</td>
+                 <td>${patient.fbs === 1 ? 'Tinggi' : 'Normal'}</td>
+                 <td>${getECGType(patient.restecg)}</td>
+                 <td>${patient.thalach}</td>
+                 <td>${patient.exang === 1 ? 'Ya' : 'Tidak'}</td>
+                 <td>${patient.oldpeak}</td>
+                 <td>${getSlopeType(patient.slope)}</td>
+                 <td>${patient.ca}</td>
+                 <td>${getThalType(patient.thal)}</td>
+                 <td>${patient.risk === 'at risk' ? 'Berisiko' : 'Tidak Berisiko'}</td>
+                 <td>${(patient.atRiskProbability * 100).toFixed(2)}%</td>
+                 <td>${(patient.noRiskProbability * 100).toFixed(2)}%</td>
+             `;
+             tableBody.appendChild(row);
+         });
+     }
+
+     // Fungsi untuk memuat pagination
+     function loadPagination(data) {
+         const pagination = document.getElementById('pagination');
+         pagination.innerHTML = ''; // Kosongkan pagination
+
+         const totalPages = Math.ceil(data.length / rowsPerPage);
+         const paginationList = document.createElement('ul');
+         paginationList.classList.add('pagination');
+
+         // Tombol ke halaman pertama
+         const firstPageItem = document.createElement('li');
+         firstPageItem.classList.add('page-item');
+         firstPageItem.innerHTML = `<a class="page-link" href="#" aria-label="first link"><span class="fas fa-angle-double-left"></span></a>`;
+         firstPageItem.addEventListener('click', () => {
+             currentPage = 1;
              loadTable(data, currentPage);
              loadPagination(data);
          });
-         paginationList.appendChild(li);
+         paginationList.appendChild(firstPageItem);
+
+         // Tombol navigasi halaman
+         for (let i = 1; i <= totalPages; i++) {
+             const li = document.createElement('li');
+             li.classList.add('page-item');
+             if (i === currentPage) {
+                 li.classList.add('active');
+             }
+             li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+             li.addEventListener('click', () => {
+                 currentPage = i;
+                 loadTable(data, currentPage);
+                 loadPagination(data);
+             });
+             paginationList.appendChild(li);
+         }
+
+         // Tombol ke halaman terakhir
+         const lastPageItem = document.createElement('li');
+         lastPageItem.classList.add('page-item');
+         lastPageItem.innerHTML = `<a class="page-link" href="#" aria-label="last link"><span class="fas fa-angle-double-right"></span></a>`;
+         lastPageItem.addEventListener('click', () => {
+             currentPage = totalPages;
+             loadTable(data, currentPage);
+             loadPagination(data);
+         });
+         paginationList.appendChild(lastPageItem);
+
+         pagination.appendChild(paginationList);
      }
 
-     // Tombol ke halaman terakhir
-     const lastPageItem = document.createElement('li');
-     lastPageItem.classList.add('page-item');
-     lastPageItem.innerHTML = `<a class="page-link" href="#" aria-label="last link"><span class="fas fa-angle-double-right"></span></a>`;
-     lastPageItem.addEventListener('click', () => {
-         currentPage = totalPages;
-         loadTable(data, currentPage);
-         loadPagination(data);
-     });
-     paginationList.appendChild(lastPageItem);
-
-     pagination.appendChild(paginationList);
- }
-
- // Fungsi untuk mengonversi jenis nyeri dada
- function getChestPainType(cp) {
-     switch (cp) {
-         case 0: return 'Tidak ada';
-         case 1: return 'Nyeri dada ringan';
-         case 2: return 'Nyeri dada sedang';
-         case 3: return 'Nyeri dada berat';
-         default: return 'Tidak diketahui';
+     // Fungsi untuk mengonversi jenis nyeri dada
+     function getChestPainType(cp) {
+         switch (cp) {
+             case 0: return 'Tidak ada';
+             case 1: return 'Nyeri dada ringan';
+             case 2: return 'Nyeri dada sedang';
+             case 3: return 'Nyeri dada berat';
+             default: return 'Tidak diketahui';
+         }
      }
- }
 
- // Fungsi untuk mengonversi jenis hasil EKG
- function getECGType(restecg) {
-     switch (restecg) {
-         case 0: return 'Normal';
-         case 1: return 'ST-T abnormal';
-         case 2: return 'Peningkatan atau penurunan gelombang T';
-         default: return 'Tidak diketahui';
+     // Fungsi untuk mengonversi jenis hasil EKG
+     function getECGType(restecg) {
+         switch (restecg) {
+             case 0: return 'Normal';
+             case 1: return 'ST-T abnormal';
+             case 2: return 'Peningkatan atau penurunan gelombang T';
+             default: return 'Tidak diketahui';
+         }
      }
- }
 
- // Fungsi untuk mengonversi slope
- function getSlopeType(slope) {
-     switch (slope) {
-         case 1: return 'Up';
-         case 2: return 'Flat';
-         case 3: return 'Down';
-         default: return 'Tidak diketahui';
+     // Fungsi untuk mengonversi slope
+     function getSlopeType(slope) {
+         switch (slope) {
+             case 1: return 'Up';
+             case 2: return 'Flat';
+             case 3: return 'Down';
+             default: return 'Tidak diketahui';
+         }
      }
- }
 
- // Fungsi untuk mengonversi thalassemia
- function getThalType(thal) {
-     switch (thal) {
-         case 1: return 'Normal';
-         case 2: return 'Defisiensi Thalassemia';
-         case 3: return 'Reversal Defisiensi Thalassemia';
-         default: return 'Tidak diketahui';
+     // Fungsi untuk mengonversi thalassemia
+     function getThalType(thal) {
+         switch (thal) {
+             case 1: return 'Normal';
+             case 2: return 'Defisiensi Thalassemia';
+             case 3: return 'Reversal Defisiensi Thalassemia';
+             default: return 'Tidak diketahui';
+         }
      }
- }
 
- // Memanggil fungsi fetchPatients saat halaman dimuat
- document.addEventListener('DOMContentLoaded', fetchPatients);
-
+     // Memanggil fungsi fetchPatients saat halaman dimuat
+     document.addEventListener('DOMContentLoaded', fetchPatients);
 
 
 
-  // Fungsi untuk mengambil data statistik pasien dari API
- async function fetchPatientStats() {
-     try {
-         const response = await fetch('/api/heart/stats');
-         const data = await response.json();
 
-         // Format data untuk chart
-         const labels = data.map(item => item[0]);
-         const values = data.map(item => item[1]);
+      // Fungsi untuk mengambil data statistik pasien dari API
+     async function fetchPatientStats() {
+         try {
+             const response = await fetch('/api/heart/stats');
+             const data = await response.json();
 
-         // Memanggil fungsi untuk menggambar bar chart
-         renderBarChart(labels, values);
-     } catch (error) {
-         console.error('Error fetching patient stats:', error);
-         alert('Gagal mengambil data statistik pasien.');
+             // Format data untuk chart
+             const labels = data.map(item => item[0]);
+             const values = data.map(item => item[1]);
+
+             // Memanggil fungsi untuk menggambar bar chart
+             renderBarChart(labels, values);
+         } catch (error) {
+             console.error('Error fetching patient stats:', error);
+             alert('Gagal mengambil data statistik pasien.');
+         }
      }
- }
 
- // Fungsi untuk menggambar bar chart menggunakan Chart.js
- function renderBarChart(labels, values) {
-     const ctx = document.getElementById('heartRiskChart').getContext('2d');
-     const chart = new Chart(ctx, {
-         type: 'bar',
-         data: {
-             labels: labels,  // At Risk / No Risk
-             datasets: [{
-                 label: 'Persentase Pasien',
-                 data: values,  // Data persentase
-                 backgroundColor: ['#ff4d4d', '#4dff4d'], // Warna bar chart
-                 borderColor: ['#cc0000', '#00cc00'],     // Warna border
-                 borderWidth: 1
-             }]
-         },
-         options: {
-             responsive: true,
-             plugins: {
-                 legend: {
-                     display: true,
-                     position: 'top',
-                     labels: {
-                         color: '#333', // Warna teks legend
-                     }
-                 },
-                 tooltip: {
-                     backgroundColor: '#fff',
-                     titleColor: '#000',
-                     bodyColor: '#000',
-                     borderColor: '#ccc',
+     // Fungsi untuk menggambar bar chart menggunakan Chart.js
+     function renderBarChart(labels, values) {
+         const ctx = document.getElementById('heartRiskChart').getContext('2d');
+         const chart = new Chart(ctx, {
+             type: 'bar',
+             data: {
+                 labels: labels,  // At Risk / No Risk
+                 datasets: [{
+                     label: 'Persentase Pasien',
+                     data: values,  // Data persentase
+                     backgroundColor: ['#ff4d4d', '#4dff4d'], // Warna bar chart
+                     borderColor: ['#cc0000', '#00cc00'],     // Warna border
                      borderWidth: 1
-                 }
+                 }]
              },
-             scales: {
-                 x: {
-                     grid: {
-                         display: false
+             options: {
+                 responsive: true,
+                 plugins: {
+                     legend: {
+                         display: true,
+                         position: 'top',
+                         labels: {
+                             color: '#333', // Warna teks legend
+                         }
                      },
-                     ticks: {
-                         color: '#666' // Warna teks label x-axis
+                     tooltip: {
+                         backgroundColor: '#fff',
+                         titleColor: '#000',
+                         bodyColor: '#000',
+                         borderColor: '#ccc',
+                         borderWidth: 1
                      }
                  },
-                 y: {
-                     beginAtZero: true,
-                     grid: {
-                         color: '#ddd' // Warna grid y-axis
+                 scales: {
+                     x: {
+                         grid: {
+                             display: false
+                         },
+                         ticks: {
+                             color: '#666' // Warna teks label x-axis
+                         }
                      },
-                     ticks: {
-                         color: '#666' // Warna teks label y-axis
+                     y: {
+                         beginAtZero: true,
+                         grid: {
+                             color: '#ddd' // Warna grid y-axis
+                         },
+                         ticks: {
+                             color: '#666' // Warna teks label y-axis
+                         }
                      }
                  }
              }
-         }
-     });
- }
+         });
+     }
 
- // Memanggil fungsi untuk mengambil data dan menggambar chart saat halaman dimuat
- fetchPatientStats();
-
-
-
-
+     // Memanggil fungsi untuk mengambil data dan menggambar chart saat halaman dimuat
+     fetchPatientStats();
          // Panggil fungsi saat halaman dimuat
          window.onload = fetchPatients;
 
@@ -600,7 +595,7 @@
 
 
 
-     <!--  fungsi search js-->
+<!--  fungsi search js-->
 
 document.querySelector('.search-bar input').addEventListener('input', async function () {
     const searchTerm = this.value.trim();
