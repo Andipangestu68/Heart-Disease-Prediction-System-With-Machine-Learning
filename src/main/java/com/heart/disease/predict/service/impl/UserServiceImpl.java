@@ -1,4 +1,5 @@
 package com.heart.disease.predict.service.impl;
+
 import com.heart.disease.predict.model.Users;
 import com.heart.disease.predict.model.Role;
 import com.heart.disease.predict.repository.UserRepository;
@@ -15,6 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -24,11 +26,9 @@ import java.util.stream.Collectors;
 @Service
 public class UserServiceImpl implements UserService {
 
-    // Mendeklarasikan UserRepository dan BCryptPasswordEncoder sebagai dependency
-    private final UserRepository userRepository;
-    private final BCryptPasswordEncoder passwordEncoder;
+    private final UserRepository userRepository; // Dependency untuk mengelola database pengguna
+    private final BCryptPasswordEncoder passwordEncoder; // Untuk mengenkripsi password pengguna
 
-    // Menggunakan @Autowired untuk menyuntikkan dependency melalui constructor
     @Autowired
     public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
@@ -37,88 +37,82 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Users findById(Long id) {
-        // Mencari user berdasarkan ID, jika tidak ditemukan maka return null
+        // Mencari user berdasarkan ID; return null jika tidak ditemukan
         return userRepository.findById(id).orElse(null);
     }
 
     @Override
     public List<Users> findAll() {
-        // Mengembalikan daftar semua pengguna yang ada di database
+        // Mengambil semua data pengguna dari database
         return userRepository.findAll();
     }
 
     @Override
     public Users save(UserRegistrationDto registrationDto) {
-        // Mengecek apakah ini adalah user pertama di sistem (jika jumlah user = 0)
+        // Memeriksa apakah ini pengguna pertama di sistem
         boolean isFirstUser = userRepository.count() == 0;
 
-        // Menetapkan role, jika ini user pertama maka ROLE_ADMIN, jika tidak maka ROLE_USER
+        // Menetapkan role berdasarkan jumlah pengguna yang ada
         Role role = isFirstUser ? new Role("ROLE_ADMIN") : new Role("ROLE_USER");
-
-        // Membuat list roles untuk user baru
         List<Role> roles = new ArrayList<>(Collections.singletonList(role));
 
-        // Membuat objek MyUser baru dengan data dari DTO dan role yang ditetapkan
+        // Membuat objek pengguna baru berdasarkan data registrasi
         Users users = new Users(
                 registrationDto.getFirstName(),
                 registrationDto.getLastName(),
                 registrationDto.getEmail(),
-                passwordEncoder.encode(registrationDto.getPassword()), // Mengenkripsi password
-                roles // Menetapkan roles ke user
+                passwordEncoder.encode(registrationDto.getPassword()), // Password dienkripsi
+                roles
         );
 
-        // Menyimpan user baru ke dalam database
+        // Menyimpan pengguna baru ke database
         return userRepository.save(users);
     }
 
     @GetMapping("/forms")
     public String getFormsPage() {
-        // Mendapatkan informasi pengguna yang sedang login dari SecurityContext
+        // Mendapatkan informasi pengguna yang sedang login
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println("Logged in as: " + authentication.getName()); // Menampilkan nama pengguna
-        System.out.println("Roles: " + authentication.getAuthorities()); // Menampilkan role pengguna
+        System.out.println("Logged in as: " + authentication.getName()); // Nama pengguna
+        System.out.println("Roles: " + authentication.getAuthorities()); // Role pengguna
         return "forms"; // Mengarahkan ke halaman forms
     }
 
     @Override
     public void delete(Users users) {
-        // Menghapus user dari database berdasarkan objek MyUser
+        // Menghapus pengguna berdasarkan objek pengguna
         userRepository.delete(users);
     }
 
     @Override
     public void deleteById(Long id) {
-        // Menghapus user dari database berdasarkan ID
+        // Menghapus pengguna berdasarkan ID
         userRepository.deleteById(id);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // Mencari user berdasarkan email (digunakan sebagai username)
+        // Mencari pengguna berdasarkan email (sebagai username)
         Users users = userRepository.findByEmail(username);
 
-        // Jika user tidak ditemukan, lemparkan exception dengan pesan dalam bahasa Indonesia
+        // Jika pengguna tidak ditemukan, lemparkan UsernameNotFoundException
         if (users == null) {
             throw new UsernameNotFoundException("Pengguna tidak ditemukan dengan email: " + username);
         }
 
-        // Mengembalikan objek UserDetails yang digunakan oleh Spring Security
+        // Mengonversi pengguna ke objek UserDetails yang digunakan Spring Security
         return new User(users.getEmail(), users.getPassword(), mapRolesToAuthorities(users.getRoles()));
     }
 
-    // Method untuk memetakan role ke authorities (yang dipahami oleh Spring Security)
+    // Memetakan roles pengguna ke authorities yang dipahami oleh Spring Security
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
-        // Mengonversi setiap role menjadi SimpleGrantedAuthority
         return roles.stream()
                 .map(role -> {
                     String roleName = role.getName();
-                    // Jika role sudah diawali dengan "ROLE_", tidak perlu menambahkannya lagi
-                    if (roleName.startsWith("ROLE_")) {
-                        return new SimpleGrantedAuthority(roleName);
-                    } else {
-                        // Menambahkan prefix "ROLE_" jika belum ada
-                        return new SimpleGrantedAuthority("ROLE_" + roleName);
-                    }
+                    // Menambahkan prefix "ROLE_" jika belum ada
+                    return roleName.startsWith("ROLE_")
+                            ? new SimpleGrantedAuthority(roleName)
+                            : new SimpleGrantedAuthority("ROLE_" + roleName);
                 })
                 .collect(Collectors.toList());
     }
