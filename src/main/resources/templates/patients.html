@@ -602,46 +602,52 @@
 
      <!--  fungsi search js-->
 
-        document.querySelector('.search-bar input').addEventListener('input', async function() {
-         const searchTerm = this.value.trim();
-         const tableBody = document.getElementById('patient-table-body');
+document.querySelector('.search-bar input').addEventListener('input', async function () {
+    const searchTerm = this.value.trim();
+    const tableBody = document.getElementById('patient-table-body');
 
-         // Jika input kosong, panggil semua data pasien
-         if (!searchTerm) {
-             fetchPatients(); // fungsi untuk memuat semua data pasien
-             return;
-         }
+    // Jika input kosong, panggil semua data pasien
+    if (!searchTerm) {
+        fetchPatients(); // Fungsi untuk memuat semua data pasien
+        return;
+    }
 
-         try {
-             const response = await fetch(`/api/heart/search?name=${searchTerm}`);
-             const data = await response.json();
+    try {
+        const response = await fetch(`/api/heart/search?name=${encodeURIComponent(searchTerm)}`);
+        const data = await response.json();
 
-             // Kosongkan isi tabel sebelum memuat data baru
-             tableBody.innerHTML = '';
+        // Kosongkan isi tabel sebelum memuat data baru
+        tableBody.innerHTML = '';
 
-             data.forEach((patient) => {
-                 const row = document.createElement('tr');
-                 row.innerHTML = `
-                     <td>${patient.id}</td>
-                     <td>${patient.name}</td>
-                     <td>${patient.age}</td>
-                     <td>${patient.sex === 1 ? 'Laki-laki' : 'Perempuan'}</td>
-                     <td>${getChestPainType(patient.cp)}</td>
-                     <td>${patient.trestbps}</td>
-                     <td>${patient.chol}</td>
-                     <td>${patient.fbs === 1 ? 'Tinggi' : 'Normal'}</td>
-                     <td>${getECGType(patient.restecg)}</td>
-                     <td>${patient.thalach}</td>
-                     <td>${patient.risk}</td>
-                     <td>${(patient.atRiskProbability * 100).toFixed(2)}%</td>
-                     <td>${(patient.noRiskProbability * 100).toFixed(2)}%</td>
-                 `;
-                 tableBody.appendChild(row);
-             });
-         } catch (error) {
-             console.error('Error fetching patient data:', error);
-         }
-     });
+        data.forEach((patient) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${patient.id}</td>
+                <td>${patient.name}</td>
+                <td>${patient.age}</td>
+                <td>${patient.sex === 1 ? 'Laki-laki' : 'Perempuan'}</td>
+                <td>${getChestPainType(patient.cp)}</td>
+                <td>${patient.trestbps}</td>
+                <td>${patient.chol}</td>
+                <td>${patient.fbs === 1 ? 'Tinggi' : 'Normal'}</td>
+                <td>${getECGType(patient.restecg)}</td>
+                <td>${patient.thalach}</td>
+                <td>${patient.exang === 1 ? 'Ya' : 'Tidak'}</td>
+                <td>${patient.oldpeak}</td>
+                <td>${getSlopeType(patient.slope)}</td>
+                <td>${patient.ca}</td>
+                <td>${getThalType(patient.thal)}</td>
+                <td>${patient.risk === 'at risk' ? 'Berisiko' : 'Tidak Berisiko'}</td>
+                <td>${(patient.atRiskProbability * 100).toFixed(2)}%</td>
+                <td>${(patient.noRiskProbability * 100).toFixed(2)}%</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    } catch (error) {
+        console.error('Error fetching patient data:', error);
+    }
+});
+
 
 
 </script>
