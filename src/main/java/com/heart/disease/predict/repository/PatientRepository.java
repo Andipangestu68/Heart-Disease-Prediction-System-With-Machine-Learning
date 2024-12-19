@@ -8,6 +8,5 @@ import java.util.List;
 
 @Repository
 public interface PatientRepository extends JpaRepository<PatientsData, Long> {
-    // Metode untuk mencari pasien berdasarkan nama (case-insensitive)
     List<PatientsData> findByNameContainingIgnoreCase(String name);
 }

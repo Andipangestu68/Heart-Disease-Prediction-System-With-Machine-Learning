@@ -16,6 +16,7 @@ public class MainController {
 
     @GetMapping("/login")
     public String getLoginPage(Model model) {
+
         return "login";
     }
 
