@@ -560,38 +560,62 @@
          // Panggil fungsi saat halaman dimuat
          window.onload = fetchPatients;
 
-         //fungsi untuk export ke excel
 
-             function confirmExport() {
-                 // Tampilkan konfirmasi kepada user
-                 const confirmAction = confirm("Apakah Anda yakin ingin mengekspor data ke Excel?");
-                 if (confirmAction) {
-                     exportToExcel(); // Jika user klik "OK", jalankan export
-                 } else {
-                     alert("Proses ekspor dibatalkan."); // Jika user klik "Cancel"
-                 }
-             }
+// fungsi export to excel
+        function confirmExport() {
+    // Tampilkan konfirmasi kepada user
+    const confirmAction = confirm("Apakah Anda yakin ingin mengekspor semua data pasien ke Excel?");
+    if (confirmAction) {
+        exportToExcel(); // Jika user klik "OK", jalankan export
+    } else {
+        alert("Proses ekspor dibatalkan."); // Jika user klik "Cancel"
+    }
+}
 
-             function exportToExcel() {
-                 try {
-                     // Ambil elemen tabel
-                     const table = document.querySelector('table');
-                     if (!table) {
-                         alert('Tabel tidak ditemukan!');
-                         return;
-                     }
+function exportToExcel() {
+    try {
+        // Periksa apakah data pasien ada
+        if (!patientData || patientData.length === 0) {
+            alert('Tidak ada data pasien untuk diekspor!');
+            return;
+        }
 
-                     // Konversi tabel ke format Excel
-                     const workbook = XLSX.utils.table_to_book(table, { sheet: "Data Pasien" });
+        // Format data pasien untuk ekspor
+        const formattedData = patientData.map((patient) => ({
+            ID: patient.id,
+            Nama: patient.name,
+            Umur: patient.age,
+            Jenis_Kelamin: patient.sex === 1 ? 'Laki-laki' : 'Perempuan',
+            Nyeri_Dada: getChestPainType(patient.cp),
+            Tekanan_Darah: patient.trestbps,
+            Kolesterol: patient.chol,
+            Gula_Puasa: patient.fbs === 1 ? 'Tinggi' : 'Normal',
+            EKG: getECGType(patient.restecg),
+            Detak_Jantung: patient.thalach,
+            Angina: patient.exang === 1 ? 'Ya' : 'Tidak',
+            Oldpeak: patient.oldpeak,
+            Slope: getSlopeType(patient.slope),
+            CA: patient.ca,
+            Thalassemia: getThalType(patient.thal),
+            Risiko: patient.risk === 'at risk' ? 'Berisiko' : 'Tidak Berisiko',
+            Probabilitas_Berisiko: `${(patient.atRiskProbability * 100).toFixed(2)}%`,
+            Probabilitas_Tidak_Berisiko: `${(patient.noRiskProbability * 100).toFixed(2)}%`,
+        }));
 
-                     // Simpan sebagai file Excel
-                     XLSX.writeFile(workbook, 'Data_Pasien.xlsx');
-                     alert('Data berhasil diekspor ke Excel!');
-                 } catch (error) {
-                     console.error('Gagal mengekspor data ke Excel:', error);
-                     alert('Terjadi kesalahan saat mengekspor data. Silakan coba lagi.');
-                 }
-             }
+        // Buat workbook Excel
+        const worksheet = XLSX.utils.json_to_sheet(formattedData);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Data Pasien");
+
+        // Simpan file Excel
+        XLSX.writeFile(workbook, 'Data_Pasien.xlsx');
+        alert('Semua data pasien berhasil diekspor ke Excel!');
+    } catch (error) {
+        console.error('Gagal mengekspor data ke Excel:', error);
+        alert('Terjadi kesalahan saat mengekspor data. Silakan coba lagi.');
+    }
+}
+
 
 
 
